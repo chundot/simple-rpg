@@ -1,0 +1,8 @@
+root=true
+
+[*.cs]
+dotnet_diagnostic.IDE0051.severity = none
+indent_size = 2
+[Assets/External/**/*.cs]
+generated_code = true
+dotnet_analyzer_diagnostic.severity = none

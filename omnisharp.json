@@ -1,0 +1,9 @@
+{
+  "RoslynExtensionsOptions": {
+    "EnableEditorConfigSupport": true,
+    "EnableAnalyzersSupport": true,
+    "LocationPaths": [
+      "./NuGet/microsoft.unity.analyzers"
+    ]
+  }
+}

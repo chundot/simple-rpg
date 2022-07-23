@@ -1,10 +1,10 @@
 using RPG.Core;
 using RPG.Movement;
 using UnityEngine;
-using UnityEngine.AI;
 
 namespace RPG.Combat
 {
+  [RequireComponent(typeof(ActionScheduler))]
   public class Fighter : MonoBehaviour, IAction
   {
     [SerializeField]
@@ -52,12 +52,12 @@ namespace RPG.Combat
       }
     }
 
-    public void Attack(CombatTarget target)
+    public void Attack(GameObject target)
     {
       _scheduler.StartAction(this);
       _target = target.GetComponent<Health>();
     }
-    public bool CanAttack(CombatTarget target)
+    public bool CanAttack(GameObject target)
     {
       if (target is null)
         return false;

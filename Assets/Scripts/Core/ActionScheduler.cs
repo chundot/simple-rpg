@@ -13,6 +13,11 @@ namespace RPG.Core
       if (_curAction != null) _curAction.Cancel();
       _curAction = action;
     }
+
+    public void CancelCurAction()
+    {
+      StartAction(null);
+    }
   }
 
 }

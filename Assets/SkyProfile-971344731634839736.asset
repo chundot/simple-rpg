@@ -13,7 +13,9 @@ Material:
   - ALLOW_STEP_EFFECT
   m_InvalidKeywords:
   - DETAIL_OVERLAY
+  - MOON
   - OVERHEAD_CLOUD
+  - STARS
   - STARS_LAYER_0
   - SUN
   m_LightmapFlags: 4
@@ -51,7 +53,9 @@ Material:
   m_ValidKeywords:
   - ALLOW_STEP_EFFECT
   - DETAIL_OVERLAY
+  - MOON
   - OVERHEAD_CLOUD
+  - STARS
   - STARS_LAYER_0
   - SUN
   m_InvalidKeywords: []
@@ -116,7 +120,7 @@ Material:
     - _OverheadCloudRemapMin: 0
     - _OverheadCloudSize: 10
     - _OverheadCloudStep: 2
-    - _StarsDensity0: 0
+    - _StarsDensity0: 0.01
     - _StarsDensity1: 0
     - _StarsDensity2: 0
     - _StarsEndPosition: 0
@@ -142,7 +146,7 @@ Material:
     - _HorizonCloudColor: {r: 1, g: 1, b: 1, a: 1}
     - _HorizonColor: {r: 1, g: 0.94944346, b: 0.839, a: 1}
     - _MoonColor: {r: 0, g: 0, b: 0, a: 0}
-    - _MoonDirection: {r: 1, g: 1, b: 1, a: 0}
+    - _MoonDirection: {r: 0, g: 0, b: 1, a: 0}
     - _MoonLightColor: {r: 0, g: 0, b: 0, a: 0}
     - _OverheadCloudColor: {r: 1, g: 1, b: 1, a: 0.5647059}
     - _SkyColor: {r: 0.2264151, g: 0.6028122, b: 0.9056604, a: 1}
@@ -150,7 +154,7 @@ Material:
     - _StarsColor1: {r: 0, g: 0, b: 0, a: 0}
     - _StarsColor2: {r: 0, g: 0, b: 0, a: 0}
     - _SunColor: {r: 1, g: 0.9700814, b: 0.9009434, a: 1}
-    - _SunDirection: {r: -0.3213938, g: -0.76604444, b: 0.5566705, a: 0}
+    - _SunDirection: {r: 0, g: 0.9999969, b: 0.0024870038, a: 0}
     - _SunLightColor: {r: 1, g: 0.9929226, b: 0.9009434, a: 1}
   m_BuildTextureStacks: []
 --- !u!114 &11400000
@@ -173,7 +177,7 @@ MonoBehaviour:
   horizonStep: 500
   fogSyncOption: 2
   fogColor: {r: 0, g: 0, b: 0, a: 0}
-  enableStars: 0
+  enableStars: 1
   starsStartPosition: -0.01
   starsEndPosition: 0
   starsOpacity: 0
@@ -181,7 +185,7 @@ MonoBehaviour:
   starsColor0: {r: 0, g: 0, b: 0, a: 0}
   starsColor1: {r: 0, g: 0, b: 0, a: 0}
   starsColor2: {r: 0, g: 0, b: 0, a: 0}
-  starsDensity0: 0
+  starsDensity0: 0.01
   starsDensity1: 0
   starsDensity2: 0
   starsSize0: 0.01
@@ -206,7 +210,7 @@ MonoBehaviour:
   sunCubemap: {fileID: 0}
   sunLightColor: {r: 1, g: 0.9929226, b: 0.9009434, a: 1}
   sunLightIntensity: 1
-  enableMoon: 0
+  enableMoon: 1
   moonTexture: {fileID: 0}
   moonColor: {r: 0, g: 0, b: 0, a: 0}
   moonSize: 0

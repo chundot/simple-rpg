@@ -1,8 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-namespace RPG.Combat
+namespace RPG.Core
 {
   public class Health : MonoBehaviour
   {
@@ -24,8 +22,8 @@ namespace RPG.Combat
 
     private void Die()
     {
-
       _animator.SetTrigger("Die");
+      GetComponent<ActionScheduler>().CancelCurAction();
     }
   }
 }

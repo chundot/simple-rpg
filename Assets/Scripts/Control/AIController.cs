@@ -10,6 +10,7 @@ namespace RPG.Control
   public class AIController : MonoBehaviour
   {
     [SerializeField] private float _chaseDistance = 5f, _suspcionTime = 5f, _waypointTolerance = 1f, _waypointWaitTime = 5f;
+    [SerializeField][Range(0, 1)] private float _patrolFraction = .3f;
     [SerializeField] private PatrolPath _patrolPath;
     private GameObject _target;
 
@@ -90,7 +91,7 @@ namespace RPG.Control
         nextPos = CurWaypoint;
       }
       if (_timeSinceAtWaypoint > _waypointWaitTime)
-        _mover.MoveTo(nextPos);
+        _mover.StartMoveAction(nextPos, _patrolFraction);
     }
 
     private void AttackBehaviour()

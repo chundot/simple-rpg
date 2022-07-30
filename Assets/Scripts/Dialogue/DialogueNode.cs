@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-namespace ARPG.Dialogue
+namespace RPG.Dialogue
 {
   public class DialogueNode : ScriptableObject
   {

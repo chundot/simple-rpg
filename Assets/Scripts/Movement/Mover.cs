@@ -7,6 +7,7 @@ namespace RPG.Movement
 {
   public class Mover : MonoBehaviour, IAction
   {
+    [SerializeField] float _maxSpd = 6f;
     NavMeshAgent _agent;
     Animator _animator;
     ActionScheduler _scheduler;
@@ -23,14 +24,15 @@ namespace RPG.Movement
       _agent.enabled = !_health.IsDead;
       UpdateAnimator();
     }
-    public void StartMoveAction(Vector3 dest)
+    public void StartMoveAction(Vector3 dest, float fraction = 1f)
     {
       _scheduler.StartAction(this);
-      MoveTo(dest);
+      MoveTo(dest, fraction);
     }
 
-    public void MoveTo(Vector3 dest)
+    public void MoveTo(Vector3 dest, float fraction = 1f)
     {
+      _agent.speed = _maxSpd * Mathf.Clamp01(fraction);
       _agent.destination = dest;
       _agent.isStopped = false;
     }

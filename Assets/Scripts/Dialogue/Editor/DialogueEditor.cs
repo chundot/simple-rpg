@@ -4,7 +4,7 @@ using UnityEditor.Callbacks;
 using UnityEditor.MPE;
 using UnityEngine;
 
-namespace ARPG.Dialogue.Editor
+namespace RPG.Dialogue.Editor
 {
   public class DialogueEditor : EditorWindow
   {

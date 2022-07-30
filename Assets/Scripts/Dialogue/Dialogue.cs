@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-namespace ARPG.Dialogue
+namespace RPG.Dialogue
 {
-  [CreateAssetMenu(fileName = "Dialogue", menuName = "ARPG/Dialogue", order = 0)]
+  [CreateAssetMenu(fileName = "Dialogue", menuName = "RPG/Dialogue", order = 0)]
   public class Dialogue : ScriptableObject, ISerializationCallbackReceiver
   {
     [SerializeField]

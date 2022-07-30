@@ -779,7 +779,7 @@ PlayerSettings:
   webGLThreadsSupport: 0
   webGLDecompressionFallback: 0
   scriptingDefineSymbols:
-    Standalone: JUPITER
+    Standalone: JUPITER;POSEIDON;POSEIDON_URP
   additionalCompilerArguments: {}
   platformArchitecture: {}
   scriptingBackend: {}

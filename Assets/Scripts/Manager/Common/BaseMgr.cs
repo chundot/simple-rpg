@@ -5,7 +5,7 @@ namespace RPG.Manager.Common
   public class BaseMgr<T> : MonoBehaviour where T : MonoBehaviour
   {
     public static T Self;
-    void Start()
+    void Awake()
     {
       if (Self != this as T)
         Clean();

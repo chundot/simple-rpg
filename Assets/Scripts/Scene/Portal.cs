@@ -1,7 +1,6 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
-using RPG.Manager;
+using RPG.Extensions;
+using RPG.Saving;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.SceneManagement;
@@ -28,10 +27,13 @@ namespace RPG.Scene
       DontDestroyOnLoad(this);
       var fader = FindObjectOfType<Fader>();
       yield return fader.FadeOut(.5f);
+      var wrapper = FindObjectOfType<SavingWrapper>();
+      wrapper.Save();
       yield return SceneManager.LoadSceneAsync(SceneToLoad);
+      wrapper.Load();
       var otherPortal = GetOtherPortal();
       UpdatePlayer(otherPortal);
-      print("Scene Loaded");
+      wrapper.Save();
       yield return fader.FadeIn(.5f);
       Destroy(this);
     }
@@ -40,7 +42,7 @@ namespace RPG.Scene
     {
       var player = GameObject.FindWithTag("Player").transform;
       var agent = player.GetComponent<NavMeshAgent>();
-      agent.Warp(otherPortal.SpawnPoint.position);
+      agent.Warp(new SerializableVector3(otherPortal.SpawnPoint.position));
       player.rotation = otherPortal.SpawnPoint.rotation;
     }
 

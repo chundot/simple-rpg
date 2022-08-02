@@ -9,7 +9,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 114438, guid: 2ef59bc5d753ebe4490b708befe65999, type: 3}
       propertyPath: m_Name
-      value: GoblinMale
+      value: GoblinMale Variant
       objectReference: {fileID: 0}
     - target: {fileID: 404400, guid: 2ef59bc5d753ebe4490b708befe65999, type: 3}
       propertyPath: m_RootOrder
@@ -186,3 +186,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68e029726f3238844a7f39d0812a9950, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &3988679777522865298
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 766111208037226800}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ea9374b509b70f4bba37e4a2ca8cf00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _uniqueIdentifier: 

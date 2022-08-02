@@ -15,6 +15,18 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 1287745031864272, guid: b3a21033f5e25ef47a403070d1d96983, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1605696656668670, guid: b3a21033f5e25ef47a403070d1d96983, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1665712329625942, guid: b3a21033f5e25ef47a403070d1d96983, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4330087673648394, guid: b3a21033f5e25ef47a403070d1d96983, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -146,8 +158,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _weaponRange: 3
-  _atkCD: 1
-  _atkDmg: 50
+  _weaponCD: 0
+  _weaponDMG: 0
+  _weaponPrefab: {fileID: 0}
+  _handTransform: {fileID: 0}
 --- !u!114 &2079829168
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -172,4 +186,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1672b8cc6c69afb43b532d136a8c2730, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
+  _health: 100
+--- !u!114 &4261355142152220160
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4755629019924792606}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ea9374b509b70f4bba37e4a2ca8cf00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _uniqueIdentifier: 8e658c8f-452c-4ce5-bd21-8454b6cba52f

@@ -2,6 +2,7 @@ using RPG.Combat;
 using RPG.Core;
 using RPG.Manager;
 using RPG.Movement;
+using RPG.Resx;
 using UnityEngine;
 namespace RPG.Control
 {
@@ -12,12 +13,12 @@ namespace RPG.Control
     private Health _health;
 
     private static Ray MouseRay { get => Camera.main.ScreenPointToRay(Input.mousePosition); }
-    void Start()
+    void Awake()
     {
+      SceneMgr.Self.Player = transform;
       _mover = GetComponent<Mover>();
       _fighter = GetComponent<Fighter>();
       _health = GetComponent<Health>();
-      SceneMgr.Self.Player = transform;
     }
 
     void Update()

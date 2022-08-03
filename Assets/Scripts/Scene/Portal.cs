@@ -1,5 +1,6 @@
 using System.Collections;
 using RPG.Extensions;
+using RPG.Manager;
 using RPG.Saving;
 using UnityEngine;
 using UnityEngine.AI;
@@ -38,15 +39,15 @@ namespace RPG.Scene
       Destroy(this);
     }
 
-    private void UpdatePlayer(Portal otherPortal)
+    void UpdatePlayer(Portal otherPortal)
     {
-      var player = GameObject.FindWithTag("Player").transform;
+      var player = SceneMgr.Self.Player;
       var agent = player.GetComponent<NavMeshAgent>();
       agent.Warp(new SerializableVector3(otherPortal.SpawnPoint.position));
       player.rotation = otherPortal.SpawnPoint.rotation;
     }
 
-    private Portal GetOtherPortal()
+    Portal GetOtherPortal()
     {
       foreach (var portal in FindObjectsOfType<Portal>())
       {

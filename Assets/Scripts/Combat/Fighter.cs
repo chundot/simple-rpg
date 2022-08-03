@@ -1,42 +1,50 @@
-using System;
+using System.Collections.Generic;
 using RPG.Core;
 using RPG.Movement;
+using RPG.Resx;
 using RPG.Saving;
-using Unity.VisualScripting;
+using RPG.Stats;
+using RPG.Utils;
 using UnityEngine;
 
 namespace RPG.Combat
 {
   [RequireComponent(typeof(ActionScheduler))]
-  public class Fighter : MonoBehaviour, IAction, ISaveable
+  public class Fighter : MonoBehaviour, IAction, ISaveable, IModifierProvider
   {
     [SerializeField] Transform _lHandTransform, _rHandTransform;
     [SerializeField] Weapon _defWeapon;
     [SerializeField] string _defWeaponName = "Unarmed";
-    Weapon _curWeapon;
+    LazyValue<Weapon> _curWeapon;
     Health _target;
     Mover _mover;
     ActionScheduler _scheduler;
     Animator _animator;
+    BaseStats _stats;
     float _atkTimer;
     bool InRange
     {
-      get => Vector3.Distance(_target.transform.position, transform.position) < _curWeapon.Range;
+      get => Vector3.Distance(_target.transform.position, transform.position) < _curWeapon.Value.Range;
     }
+    public Health Target { get => _target; }
+    public float Dmg { get => _stats.Dmg; }
     const string WEAPON_NAME = "Weapon";
     void Awake()
     {
       _mover = GetComponent<Mover>();
       _scheduler = GetComponent<ActionScheduler>();
       _animator = GetComponent<Animator>();
+      _stats = GetComponent<BaseStats>();
+      _curWeapon = new(() =>
+      {
+        var def = Resources.Load<Weapon>(_defWeaponName);
+        AttachWeapon(def);
+        return def;
+      });
     }
     void Start()
     {
-      if (_curWeapon is null)
-      {
-        var weapon = Resources.Load<Weapon>(_defWeaponName);
-        EquipWeapon(weapon);
-      }
+      _curWeapon.ForceInit();
     }
 
     // Update is called once per frame
@@ -57,7 +65,12 @@ namespace RPG.Combat
     public void EquipWeapon(Weapon weapon)
     {
       DestroyOldWeapon(_lHandTransform, _rHandTransform);
-      _curWeapon = weapon;
+      _curWeapon.Value = weapon;
+      AttachWeapon(weapon);
+    }
+
+    private void AttachWeapon(Weapon weapon)
+    {
       var weaponInstance = weapon.Spawn(_lHandTransform, _rHandTransform, _animator);
       if (weaponInstance != null)
         weaponInstance.name = WEAPON_NAME;
@@ -87,7 +100,7 @@ namespace RPG.Combat
         _animator.ResetTrigger("StopAttack");
         // Trigger Hit()
         _animator.SetTrigger("Attack");
-        _atkTimer = _curWeapon.CD;
+        _atkTimer = _curWeapon.Value.CD;
       }
     }
 
@@ -113,13 +126,13 @@ namespace RPG.Combat
     public void Hit()
     {
       if (_target == null) return;
-      if (_curWeapon.HasProjectile)
+      if (_curWeapon.Value.HasProjectile)
       {
-        _curWeapon.LaunchProjectile(_lHandTransform, _rHandTransform, _target);
+        _curWeapon.Value.LaunchProjectile(_lHandTransform, _rHandTransform, _target, gameObject, Dmg);
       }
       else
       {
-        _target.TakeDamage(_curWeapon.Dmg);
+        _target.TakeDamage(gameObject, Dmg);
       }
     }
     public void Shoot()
@@ -129,7 +142,7 @@ namespace RPG.Combat
 
     public object CaptureState()
     {
-      return _curWeapon.name;
+      return _curWeapon.Value.name;
     }
 
     public void RestoreState(object state)
@@ -137,6 +150,18 @@ namespace RPG.Combat
       if (state is not string s) return;
       var weapon = Resources.Load<Weapon>(s);
       EquipWeapon(weapon);
+    }
+
+    public IEnumerable<float> GetAdditiveModifier(StatsEnum stat)
+    {
+      if (stat is StatsEnum.Damage)
+        yield return _curWeapon.Value.Dmg;
+    }
+
+    public IEnumerable<float> GetPercentModifier(StatsEnum stat)
+    {
+      if (stat is StatsEnum.Damage)
+        yield return _curWeapon.Value.ExtraPercent;
     }
   }
 

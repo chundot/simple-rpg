@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 2647727688974374750}
   - component: {fileID: 2278189891898267116}
   - component: {fileID: 8334267972112076258}
+  - component: {fileID: 1357222644058594258}
   m_Layer: 0
   m_Name: BaseCreaturePrefab
   m_TagString: Player
@@ -70,10 +71,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.26539436
+  m_Radius: 0.340714
   m_Height: 1.76
   m_Direction: 1
-  m_Center: {x: 6.3619604e-10, y: 0.89185405, z: -0.036283642}
+  m_Center: {x: -0.019937158, y: 0.89185405, z: -0.03323725}
 --- !u!195 &2647727688974374720
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -121,8 +122,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7eda2739ddf96c4bab5a860ce2b4eb6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _handTransform: {fileID: 0}
+  _lHandTransform: {fileID: 0}
+  _rHandTransform: {fileID: 0}
   _defWeapon: {fileID: 11400000, guid: d9d258667d0801740bec92f1034dd9a3, type: 2}
+  _defWeaponName: Unarmed
 --- !u!114 &2647727688974374748
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -147,7 +150,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1672b8cc6c69afb43b532d136a8c2730, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _health: 100
 --- !u!114 &2278189891898267116
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -177,3 +179,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1357222644058594258
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7296391235673472754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc3b93a0f3e1c6443976f333cdd6db5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _level: 1
+  _charClass: 0
+  _progression: {fileID: 11400000, guid: 11f5e84139b443d4e8065a15d2f332c5, type: 2}
+  _levelUpFX: {fileID: 0}
+  _canUseModifier: 1

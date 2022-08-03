@@ -5,6 +5,8 @@ namespace RPG.Stats
     Player,
     Peasant,
     Mage,
+    Rogue,
+    Archer,
     Goblin,
     GoblinF
   }

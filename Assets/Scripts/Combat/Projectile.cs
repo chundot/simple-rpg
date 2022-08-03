@@ -1,6 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
-using RPG.Core;
+using RPG.Resx;
 using UnityEngine;
 
 namespace RPG.Combat
@@ -13,14 +11,18 @@ namespace RPG.Combat
     [SerializeField] GameObject[] _destoryOnHit;
     Health _target;
     float _dmg;
-
     Vector3 AimLocation { get => _target.transform.position + Vector3.up; }
-    public Health Target { set => _target = value; }
-    public float Dmg { set => _dmg = value; }
+    GameObject _from;
     void Start()
     {
       transform.LookAt(AimLocation);
       Destroy(gameObject, _maxLifeTime);
+    }
+    public void Init(float dmg, Health target, GameObject from)
+    {
+      _dmg = dmg;
+      _target = target;
+      _from = from;
     }
     void Update()
     {
@@ -33,7 +35,7 @@ namespace RPG.Combat
     {
       if (other.GetComponent<Health>() != _target || _target.IsDead) return;
       _spd = 0;
-      _target.TakeDamage(_dmg);
+      _target.TakeDamage(_from, _dmg);
       if (_hitFX != null)
         Instantiate(_hitFX, AimLocation, transform.rotation);
       foreach (var obj in _destoryOnHit)

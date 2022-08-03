@@ -9,10 +9,20 @@ namespace RPG.Cine
   public class CineCtrlRemover : MonoBehaviour
   {
     Transform Player { get => SceneMgr.Self.Player; }
-    void Start()
+    PlayableDirector _pd;
+    void Awake()
     {
-      GetComponent<PlayableDirector>().played += DisableCtrl;
-      GetComponent<PlayableDirector>().stopped += EnableCtrl;
+      _pd = GetComponent<PlayableDirector>();
+    }
+    void OnEnable()
+    {
+      _pd.played += DisableCtrl;
+      _pd.stopped += EnableCtrl;
+    }
+    void OnDisable()
+    {
+      _pd.played -= DisableCtrl;
+      _pd.stopped -= EnableCtrl;
     }
     void DisableCtrl(PlayableDirector pd)
     {

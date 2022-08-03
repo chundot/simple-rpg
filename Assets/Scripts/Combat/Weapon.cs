@@ -1,21 +1,20 @@
-using System.IO;
-using RPG.Core;
-using UnityEditor;
+using RPG.Resx;
 using UnityEngine;
 
 namespace RPG.Combat
 {
-  [CreateAssetMenu(fileName = "New Weapon", menuName = "RPG/Weapon", order = 0)]
+  [CreateAssetMenu(fileName = "Weapon", menuName = "RPG/Weapon", order = 0)]
   public class Weapon : ScriptableObject
   {
     [SerializeField] AnimatorOverrideController _weaponAnimator;
     [SerializeField] GameObject _weaponPrefab;
-    [SerializeField] float _range, _dmg, _cd;
+    [SerializeField] float _range, _dmg, _cd, _extraPercent = 0;
     [SerializeField] bool _isRightHanded = true;
     [SerializeField] Projectile _projectile;
     public float Range { get => _range; }
     public float Dmg { get => _dmg; }
     public float CD { get => _cd; }
+    public float ExtraPercent { get => _extraPercent; }
     public bool HasProjectile { get => _projectile != null; }
     public GameObject Spawn(Transform lHandTransform, Transform rHandTransform, Animator animator)
     {
@@ -29,12 +28,11 @@ namespace RPG.Combat
       return obj;
     }
 
-    public void LaunchProjectile(Transform lHandTransform, Transform rHandTransform, Health target)
+    public void LaunchProjectile(Transform lHandTransform, Transform rHandTransform, Health target, GameObject from, float calculatedDmg)
     {
       if (!HasProjectile) return;
       var projectile = Instantiate(_projectile, GetTransform(lHandTransform, rHandTransform).position, Quaternion.identity);
-      projectile.Dmg = Dmg;
-      projectile.Target = target;
+      projectile.Init(calculatedDmg, target, from);
     }
 
     Transform GetTransform(Transform lHandTransform, Transform rHandTransform) => _isRightHanded ? rHandTransform : lHandTransform;

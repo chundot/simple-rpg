@@ -3,53 +3,54 @@ using RPG.Combat;
 using RPG.Core;
 using RPG.Manager;
 using RPG.Movement;
+using RPG.Resx;
+using RPG.Utils;
 using UnityEngine;
 
 namespace RPG.Control
 {
   public class AIController : MonoBehaviour
   {
-    [SerializeField] private float _chaseDistance = 5f, _suspcionTime = 5f, _waypointTolerance = 1f, _waypointWaitTime = 5f;
-    [SerializeField][Range(0, 1)] private float _patrolFraction = .3f;
-    [SerializeField] private PatrolPath _patrolPath;
-    private GameObject _target;
+    [SerializeField] float _chaseDistance = 5f, _suspcionTime = 5f, _waypointTolerance = 1f, _waypointWaitTime = 5f;
+    [SerializeField][Range(0, 1)] float _patrolFraction = .3f;
+    [SerializeField] PatrolPath _patrolPath;
+    GameObject _target;
 
-    private GameObject Target
+    GameObject Target
     {
       get
       {
         if (_target == null)
         {
-          //_target = SceneMgr.Self.Player.gameObject;
-          _target = GameObject.FindWithTag("Player");
+          _target = SceneMgr.Self.Player.gameObject;
+          //_target = GameObject.FindWithTag("Player");
         }
-
         return _target;
       }
     }
 
-    private Fighter _fighter;
-    private Health _health;
-    private Mover _mover;
-    private ActionScheduler _scheduler;
-    private Vector3 _guardPos;
-    private int _curWaypointIdx = 0;
-    private float _timeSinceSawPlayer, _timeSinceAtWaypoint;
-    private float Distance => Vector3.Distance(transform.position, Target.transform.position);
-    private bool InRange => Distance < _chaseDistance;
-    private Vector3 CurWaypoint { get => _patrolPath.GetPoint(_curWaypointIdx); }
-    private bool AtWayPoint => Vector3.Distance(transform.position, CurWaypoint) < _waypointTolerance;
-    private void Start()
+    Fighter _fighter;
+    Health _health;
+    Mover _mover;
+    ActionScheduler _scheduler;
+    LazyValue<Vector3> _guardPos;
+    int _curWaypointIdx = 0;
+    float _timeSinceSawPlayer, _timeSinceAtWaypoint;
+    float Distance => Vector3.Distance(transform.position, Target.transform.position);
+    bool InRange => Distance < _chaseDistance;
+    Vector3 CurWaypoint { get => _patrolPath.GetPoint(_curWaypointIdx); }
+    bool AtWayPoint => Vector3.Distance(transform.position, CurWaypoint) < _waypointTolerance;
+    void Awake()
     {
       _fighter = GetComponent<Fighter>();
       _health = GetComponent<Health>();
       _mover = GetComponent<Mover>();
       _scheduler = GetComponent<ActionScheduler>();
-      _guardPos = transform.position;
+      _guardPos = new(() => transform.position);
     }
 
     // Update is called once per frame
-    private void Update()
+    void Update()
     {
       if (_health.IsDead)
       {
@@ -72,16 +73,16 @@ namespace RPG.Control
       UpdateTimer();
     }
 
-    private void CycleWaypoint() => _curWaypointIdx = _patrolPath.GetNext(_curWaypointIdx);
+    void CycleWaypoint() => _curWaypointIdx = _patrolPath.GetNext(_curWaypointIdx);
 
-    private void SuspicionBehaviour()
+    void SuspicionBehaviour()
     {
       _scheduler.CancelCurAction();
     }
 
-    private void PatrolBehaviour()
+    void PatrolBehaviour()
     {
-      var nextPos = _guardPos;
+      var nextPos = _guardPos.Value;
       if (_patrolPath != null)
       {
         if (AtWayPoint)
@@ -95,17 +96,17 @@ namespace RPG.Control
         _mover.StartMoveAction(nextPos, _patrolFraction);
     }
 
-    private void AttackBehaviour()
+    void AttackBehaviour()
     {
       _fighter.Attack(Target);
     }
-    private void UpdateTimer()
+    void UpdateTimer()
     {
       _timeSinceSawPlayer += Time.deltaTime;
       _timeSinceAtWaypoint += Time.deltaTime;
     }
 
-    private void OnDrawGizmosSelected()
+    void OnDrawGizmosSelected()
     {
       Gizmos.color = Color.blue;
       Gizmos.DrawWireSphere(transform.position, _chaseDistance);

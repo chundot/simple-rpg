@@ -4641,6 +4641,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1357222644058594258, guid: bcfbde54294311446a1f9936cea17b11,
+        type: 3}
+      propertyPath: _charClass
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1357222644058594258, guid: bcfbde54294311446a1f9936cea17b11,
+        type: 3}
+      propertyPath: _levelUpFX
+      value: 
+      objectReference: {fileID: 6563136912888346119, guid: 125b2285c1f2a27499d90e8ae6df52d5,
+        type: 3}
     - target: {fileID: 2647727688974374723, guid: bcfbde54294311446a1f9936cea17b11,
         type: 3}
       propertyPath: _weaponCD
@@ -4750,5 +4761,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b50e19de314f5ba4aad64cefd0f30682, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7085301228338562830
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5857258164711127475}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c594ebc84b16b514ab0b3912af45db4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

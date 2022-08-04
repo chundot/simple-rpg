@@ -4784,6 +4784,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 548326135373387986, guid: bcfbde54294311446a1f9936cea17b11,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 18
+      objectReference: {fileID: 0}
     - target: {fileID: 1357222644058594258, guid: bcfbde54294311446a1f9936cea17b11,
         type: 3}
       propertyPath: _charClass
@@ -4809,6 +4814,11 @@ PrefabInstance:
       propertyPath: _rHandTransform
       value: 
       objectReference: {fileID: 3933085842493662272}
+    - target: {fileID: 4458522912591989062, guid: bcfbde54294311446a1f9936cea17b11,
+        type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: e7a068fc894ced2438c719feae89ea40, type: 3}
     - target: {fileID: 7210326390416128654, guid: bcfbde54294311446a1f9936cea17b11,
         type: 3}
       propertyPath: m_Avatar
@@ -4843,6 +4853,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8598281244614837431, guid: bcfbde54294311446a1f9936cea17b11,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 17
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bcfbde54294311446a1f9936cea17b11, type: 3}

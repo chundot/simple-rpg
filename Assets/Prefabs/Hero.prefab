@@ -4641,6 +4641,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 548326135373387986, guid: bcfbde54294311446a1f9936cea17b11,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 23
+      objectReference: {fileID: 0}
     - target: {fileID: 1357222644058594258, guid: bcfbde54294311446a1f9936cea17b11,
         type: 3}
       propertyPath: _charClass
@@ -4672,6 +4677,11 @@ PrefabInstance:
       propertyPath: _rHandTransform
       value: 
       objectReference: {fileID: 8332996181466627443}
+    - target: {fileID: 4360156085922120117, guid: bcfbde54294311446a1f9936cea17b11,
+        type: 3}
+      propertyPath: _show
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7210326390416128654, guid: bcfbde54294311446a1f9936cea17b11,
         type: 3}
       propertyPath: m_Avatar
@@ -4763,6 +4773,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b50e19de314f5ba4aad64cefd0f30682, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _mappings:
+  - Type: 0
+    Texture: {fileID: 2800000, guid: 21628736160fcc9488493401da3ef621, type: 3}
+    Hotspot: {x: 0, y: 0}
+  - Type: 1
+    Texture: {fileID: 2800000, guid: 8859fce41c5d0a148ad0b7eebfca7fe9, type: 3}
+    Hotspot: {x: 0, y: 0}
+  - Type: 2
+    Texture: {fileID: 2800000, guid: 2d18e23e3ce249b4489b8bcdd02d3f48, type: 3}
+    Hotspot: {x: 0, y: 0}
+  - Type: 3
+    Texture: {fileID: 2800000, guid: 2e71a8202d3b4a3448ec85ced5a40265, type: 3}
+    Hotspot: {x: 0, y: 0}
+  - Type: 4
+    Texture: {fileID: 2800000, guid: f8c873f1e53e83f4aabf342d6be1dfc3, type: 3}
+    Hotspot: {x: 0, y: 0}
+  _maxNavPathLength: 40
+  _maxNavProjectionDistance: 1
 --- !u!114 &7085301228338562830
 MonoBehaviour:
   m_ObjectHideFlags: 0

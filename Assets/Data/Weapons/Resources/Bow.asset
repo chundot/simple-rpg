@@ -9,15 +9,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 307c3688c7b563e459d5f358dcef5a8d, type: 3}
+  m_Script: {fileID: 11500000, guid: 1c6c1099ea6de214a8eccb5e4df389a4, type: 3}
   m_Name: Bow
   m_EditorClassIdentifier: 
   _weaponAnimator: {fileID: 22100000, guid: e05ff2219af1ee34f959a467fe5a84cf, type: 2}
-  _weaponPrefab: {fileID: 1445000710448190, guid: b26c75d83e56caa4c8ba7490885d79d5,
+  _weaponPrefab: {fileID: 5364979834015409081, guid: 84c19fb6228055441b9b32cfa2b1ca93,
     type: 3}
-  _range: 12
-  _dmg: 30
-  _cd: 3
+  _range: 10
+  _dmg: 5
+  _cd: 3.5
+  _extraPercent: 0
   _isRightHanded: 0
-  _projectile: {fileID: 1943227599987838255, guid: 0ca441843443fc54a8942ef1eac96814,
+  _projectile: {fileID: 8544358848998646689, guid: 0abc3aae6726dba458f6a7a6c278255f,
     type: 3}

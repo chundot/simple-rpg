@@ -13,8 +13,8 @@ namespace RPG.Combat
   public class Fighter : MonoBehaviour, IAction, ISaveable, IModifierProvider
   {
     [SerializeField] Transform _lHandTransform, _rHandTransform;
-    [SerializeField] Weapon _defWeapon;
-    [SerializeField] string _defWeaponName = "Unarmed";
+    [SerializeField] WeaponConfig _defWeapon;
+    WeaponConfig _curWeaponCfg;
     LazyValue<Weapon> _curWeapon;
     Health _target;
     Mover _mover;
@@ -24,7 +24,7 @@ namespace RPG.Combat
     float _atkTimer;
     bool InRange
     {
-      get => Vector3.Distance(_target.transform.position, transform.position) < _curWeapon.Value.Range;
+      get => Vector3.Distance(_target.transform.position, transform.position) < _curWeaponCfg.Range;
     }
     public Health Target { get => _target; }
     public float Dmg { get => _stats.Dmg; }
@@ -35,12 +35,8 @@ namespace RPG.Combat
       _scheduler = GetComponent<ActionScheduler>();
       _animator = GetComponent<Animator>();
       _stats = GetComponent<BaseStats>();
-      _curWeapon = new(() =>
-      {
-        var def = Resources.Load<Weapon>(_defWeaponName);
-        AttachWeapon(def);
-        return def;
-      });
+      _curWeaponCfg = _defWeapon;
+      _curWeapon = new(() => AttachWeapon(_defWeapon));
     }
     void Start()
     {
@@ -62,18 +58,19 @@ namespace RPG.Combat
       }
     }
 
-    public void EquipWeapon(Weapon weapon)
+    public void EquipWeapon(WeaponConfig weapon)
     {
       DestroyOldWeapon(_lHandTransform, _rHandTransform);
-      _curWeapon.Value = weapon;
-      AttachWeapon(weapon);
+      _curWeaponCfg = weapon;
+      _curWeapon.Value = AttachWeapon(weapon);
     }
 
-    private void AttachWeapon(Weapon weapon)
+    Weapon AttachWeapon(WeaponConfig weapon)
     {
       var weaponInstance = weapon.Spawn(_lHandTransform, _rHandTransform, _animator);
       if (weaponInstance != null)
         weaponInstance.name = WEAPON_NAME;
+      return weaponInstance;
     }
 
     void DestroyOldWeapon(Transform lHandTransform, Transform rHandTransform)
@@ -100,7 +97,7 @@ namespace RPG.Combat
         _animator.ResetTrigger("StopAttack");
         // Trigger Hit()
         _animator.SetTrigger("Attack");
-        _atkTimer = _curWeapon.Value.CD;
+        _atkTimer = _curWeaponCfg.CD;
       }
     }
 
@@ -126,9 +123,11 @@ namespace RPG.Combat
     public void Hit()
     {
       if (_target == null) return;
-      if (_curWeapon.Value.HasProjectile)
+      if (_curWeapon.Value != null)
+        _curWeapon.Value.OnHit();
+      if (_curWeaponCfg.HasProjectile)
       {
-        _curWeapon.Value.LaunchProjectile(_lHandTransform, _rHandTransform, _target, gameObject, Dmg);
+        _curWeaponCfg.LaunchProjectile(_lHandTransform, _rHandTransform, _target, gameObject, Dmg);
       }
       else
       {
@@ -142,26 +141,26 @@ namespace RPG.Combat
 
     public object CaptureState()
     {
-      return _curWeapon.Value.name;
+      return _curWeaponCfg.name;
     }
 
     public void RestoreState(object state)
     {
       if (state is not string s) return;
-      var weapon = Resources.Load<Weapon>(s);
+      var weapon = Resources.Load<WeaponConfig>(s);
       EquipWeapon(weapon);
     }
 
     public IEnumerable<float> GetAdditiveModifier(StatsEnum stat)
     {
       if (stat is StatsEnum.Damage)
-        yield return _curWeapon.Value.Dmg;
+        yield return _curWeaponCfg.Dmg;
     }
 
     public IEnumerable<float> GetPercentModifier(StatsEnum stat)
     {
       if (stat is StatsEnum.Damage)
-        yield return _curWeapon.Value.ExtraPercent;
+        yield return _curWeaponCfg.ExtraPercent;
     }
   }
 

@@ -1,5 +1,6 @@
 using RPG.Resx;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace RPG.Combat
 {
@@ -9,6 +10,7 @@ namespace RPG.Combat
     [SerializeField] bool _homing = false;
     [SerializeField] GameObject _hitFX;
     [SerializeField] GameObject[] _destoryOnHit;
+    [SerializeField] UnityEvent _onHit;
     Health _target;
     float _dmg;
     Vector3 AimLocation { get => _target.transform.position + Vector3.up; }
@@ -34,6 +36,7 @@ namespace RPG.Combat
     void OnTriggerEnter(Collider other)
     {
       if (other.GetComponent<Health>() != _target || _target.IsDead) return;
+      _onHit?.Invoke();
       _spd = 0;
       _target.TakeDamage(_from, _dmg);
       if (_hitFX != null)

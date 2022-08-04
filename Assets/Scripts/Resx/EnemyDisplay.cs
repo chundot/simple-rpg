@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using RPG.Combat;
 using RPG.Manager;
 using UnityEngine;

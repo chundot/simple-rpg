@@ -6,6 +6,7 @@ namespace RPG.Scene
   public class Fader : MonoBehaviour
   {
     CanvasGroup _cg;
+    Coroutine _curActiveFade;
     CanvasGroup CG
     {
       get
@@ -19,19 +20,25 @@ namespace RPG.Scene
     {
       CG.alpha = 1;
     }
-    public IEnumerator FadeOut(float time)
+    public Coroutine FadeOut(float time)
     {
-      while (CG.alpha < 1)
-      {
-        CG.alpha += Time.deltaTime / time;
-        yield return null;
-      }
+      return Fade(1, time);
     }
-    public IEnumerator FadeIn(float time)
+    public Coroutine FadeIn(float time)
     {
-      while (CG.alpha > 0)
+      return Fade(0, time);
+    }
+    public Coroutine Fade(float target, float time)
+    {
+      if (_curActiveFade != null) StopCoroutine(_curActiveFade);
+      _curActiveFade = StartCoroutine(FadeRoutine(target, time));
+      return _curActiveFade;
+    }
+    IEnumerator FadeRoutine(float target, float time)
+    {
+      while (!Mathf.Approximately(_cg.alpha, target))
       {
-        CG.alpha -= Time.deltaTime / time;
+        CG.alpha = Mathf.MoveTowards(_cg.alpha, target, Time.deltaTime / time);
         yield return null;
       }
     }

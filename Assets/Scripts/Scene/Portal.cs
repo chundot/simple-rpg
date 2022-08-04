@@ -1,4 +1,5 @@
 using System.Collections;
+using RPG.Control;
 using RPG.Extensions;
 using RPG.Manager;
 using RPG.Saving;
@@ -27,15 +28,18 @@ namespace RPG.Scene
       if (SceneToLoad < 0) yield break;
       DontDestroyOnLoad(this);
       var fader = FindObjectOfType<Fader>();
+      SceneMgr.Self.Player.GetComponent<PlayerController>().enabled = false;
       yield return fader.FadeOut(.5f);
       var wrapper = FindObjectOfType<SavingWrapper>();
       wrapper.Save();
       yield return SceneManager.LoadSceneAsync(SceneToLoad);
+      SceneMgr.Self.Player.GetComponent<PlayerController>().enabled = false;
       wrapper.Load();
       var otherPortal = GetOtherPortal();
       UpdatePlayer(otherPortal);
       wrapper.Save();
-      yield return fader.FadeIn(.5f);
+      fader.FadeIn(.5f);
+      SceneMgr.Self.Player.GetComponent<PlayerController>().enabled = true;
       Destroy(this);
     }
 

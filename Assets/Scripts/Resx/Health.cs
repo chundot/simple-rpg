@@ -1,25 +1,35 @@
+using System;
 using RPG.Core;
 using RPG.Saving;
 using RPG.Stats;
 using RPG.Utils;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace RPG.Resx
 {
   public class Health : MonoBehaviour, ISaveable
   {
+    [SerializeField] UnityEvent<float> _takeDmg, _setFill;
+    [SerializeField] UnityEvent<bool> _changeBar;
     Animator _animator;
     BaseStats _stats;
     LazyValue<float> _curHealth;
-    public float Percentage { get => _curHealth.Value / _stats.MaxHealth * 100; }
+    public float Percentage { get => Fraction * 100; }
+    public float Fraction { get => _curHealth.Value / _stats.MaxHealth; }
     public bool IsDead { get => _curHealth.Value == 0; }
-
     void Awake()
     {
       _animator = GetComponent<Animator>();
       _stats = GetComponent<BaseStats>();
       _curHealth = new(() => _stats.MaxHealth);
     }
+
+    public void Heal(float healthRegen)
+    {
+      _curHealth.Value = Mathf.Min(_stats.MaxHealth, _curHealth.Value + healthRegen);
+    }
+
     void OnEnable()
     {
       _stats.OnLevelUp += HealthRegenOnLevelUp;
@@ -39,6 +49,11 @@ namespace RPG.Resx
         Die();
         AwardXP(from);
       }
+      else
+      {
+        _setFill?.Invoke(Fraction);
+        _takeDmg?.Invoke(dmg);
+      }
     }
 
     void AwardXP(GameObject from)
@@ -49,6 +64,7 @@ namespace RPG.Resx
 
     void Die()
     {
+      _changeBar?.Invoke(false);
       _animator.SetTrigger("Die");
       GetComponent<ActionScheduler>().CancelCurAction();
     }

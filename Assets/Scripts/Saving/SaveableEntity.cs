@@ -62,7 +62,7 @@ namespace RPG.Saving
 
       if (_globalLookup[candidate] == this) return true;
 
-      if (_globalLookup[candidate] == null)
+      if (!_globalLookup[candidate])
       {
         _globalLookup.Remove(candidate);
         return true;

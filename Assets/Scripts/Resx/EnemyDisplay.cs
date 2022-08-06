@@ -20,7 +20,7 @@ namespace RPG.Resx
     void Update()
     {
       var target = _player.Target;
-      if (target == null) _text.text = "N/A";
+      if (!target) _text.text = "N/A";
       else _text.text = $"{target.Percentage:0}%";
     }
   }

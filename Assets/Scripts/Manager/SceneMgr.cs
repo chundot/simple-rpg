@@ -10,13 +10,13 @@ namespace RPG.Manager
     {
       get
       {
-        if (_player == null)
+        if (!_player)
           _player = GameObject.FindGameObjectWithTag("Player").transform;
         return _player;
       }
       set
       {
-        if (_player == null)
+        if (!_player)
           _player = value;
       }
     }

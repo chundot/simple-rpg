@@ -58,7 +58,7 @@ namespace RPG.Dialogue.Editor
 
     private void OnGUI()
     {
-      if (_selectedDialogue == null)
+      if (!_selectedDialogue)
       {
         EditorGUILayout.LabelField("No dialogue selected");
       }
@@ -110,10 +110,10 @@ namespace RPG.Dialogue.Editor
 
     private void ProcessEvent()
     {
-      if (Event.current.type is EventType.MouseDown && _draggingNode == null)
+      if (Event.current.type is EventType.MouseDown && !_draggingNode)
       {
         _draggingNode = GetNodeAtPos(Event.current.mousePosition);
-        if (_draggingNode == null)
+        if (!_draggingNode)
         {
           _draggingCanvas = true;
           _draggingCanvasOffset = Event.current.mousePosition + _scrollPos;
@@ -149,7 +149,7 @@ namespace RPG.Dialogue.Editor
       GUILayout.BeginHorizontal();
       if (GUILayout.Button("x"))
         _deletingNode = node;
-      if (_linkingParentNode == null)
+      if (!_linkingParentNode)
       {
         if (GUILayout.Button("link"))
           _linkingParentNode = node;

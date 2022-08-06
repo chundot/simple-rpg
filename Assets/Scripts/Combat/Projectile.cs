@@ -28,7 +28,7 @@ namespace RPG.Combat
     }
     void Update()
     {
-      if (_target == null) return;
+      if (!_target) return;
       if (_homing && !_target.IsDead)
         transform.LookAt(AimLocation);
       transform.Translate(Time.deltaTime * _spd * Vector3.forward);

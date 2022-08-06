@@ -20,7 +20,7 @@ namespace RPG.Control
     {
       get
       {
-        if (_target == null)
+        if (!_target)
         {
           _target = SceneMgr.Self.Player.gameObject;
           //_target = GameObject.FindWithTag("Player");

@@ -47,7 +47,7 @@ namespace RPG.Combat
     void Update()
     {
       if (_atkTimer > 0) _atkTimer -= Time.deltaTime;
-      if (_target == null || _target.IsDead)
+      if (!_target || _target.IsDead)
         return;
       if (!InRange)
         _mover.MoveTo(_target.transform.position);
@@ -123,7 +123,7 @@ namespace RPG.Combat
     }
     public void Hit()
     {
-      if (_target == null) return;
+      if (!_target) return;
       if (_curWeapon.Value != null)
         _curWeapon.Value.OnHit();
       if (_curWeaponCfg.HasProjectile)

@@ -11,7 +11,7 @@ namespace RPG.Scene
     {
       get
       {
-        if (_cg == null)
+        if (!_cg)
           _cg = GetComponent<CanvasGroup>();
         return _cg;
       }

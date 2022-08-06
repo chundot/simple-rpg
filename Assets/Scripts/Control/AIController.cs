@@ -11,7 +11,7 @@ namespace RPG.Control
 {
   public class AIController : MonoBehaviour
   {
-    [SerializeField] float _chaseDistance = 5f, _suspcionTime = 5f, _waypointTolerance = 1f, _waypointWaitTime = 5f;
+    [SerializeField] float _chaseDistance = 5f, _suspcionTime = 5f, _waypointTolerance = 1f, _waypointWaitTime = 5f, _agroCDTime = 3, _shoutDistance = 4;
     [SerializeField][Range(0, 1)] float _patrolFraction = .3f;
     [SerializeField] PatrolPath _patrolPath;
     GameObject _target;
@@ -35,10 +35,11 @@ namespace RPG.Control
     ActionScheduler _scheduler;
     LazyValue<Vector3> _guardPos;
     int _curWaypointIdx = 0;
-    float _timeSinceSawPlayer, _timeSinceAtWaypoint;
+    float _timeSinceSawPlayer = Mathf.Infinity, _timeSinceAtWaypoint = Mathf.Infinity, _timeSinceAggrevated = Mathf.Infinity;
     float Distance => Vector3.Distance(transform.position, Target.transform.position);
     bool InRange => Distance < _chaseDistance;
-    Vector3 CurWaypoint { get => _patrolPath.GetPoint(_curWaypointIdx); }
+    bool IsAggrevated => InRange || _timeSinceAggrevated < _agroCDTime;
+    Vector3 CurWaypoint => _patrolPath.GetPoint(_curWaypointIdx);
     bool AtWayPoint => Vector3.Distance(transform.position, CurWaypoint) < _waypointTolerance;
     void Awake()
     {
@@ -57,7 +58,7 @@ namespace RPG.Control
         return;
       }
 
-      if (InRange && _fighter.CanAttack(Target))
+      if (IsAggrevated && _fighter.CanAttack(Target))
       {
         _timeSinceSawPlayer = 0;
         AttackBehaviour();
@@ -98,14 +99,30 @@ namespace RPG.Control
 
     void AttackBehaviour()
     {
+      AggrevateNearbyEnemies();
       _fighter.Attack(Target);
     }
+
+    void AggrevateNearbyEnemies()
+    {
+      var hits = Physics.SphereCastAll(transform.position, _shoutDistance, Vector3.up, 0);
+      foreach (var hit in hits)
+      {
+        if (!hit.transform.TryGetComponent<AIController>(out var ctrl) || hit.transform == transform) continue;
+        ctrl.Aggrevate();
+      }
+    }
+
     void UpdateTimer()
     {
       _timeSinceSawPlayer += Time.deltaTime;
       _timeSinceAtWaypoint += Time.deltaTime;
+      _timeSinceAggrevated += Time.deltaTime;
     }
-
+    public void Aggrevate()
+    {
+      _timeSinceAggrevated = 0;
+    }
     void OnDrawGizmosSelected()
     {
       Gizmos.color = Color.blue;

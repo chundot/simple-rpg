@@ -13,7 +13,7 @@ namespace RPG.Control
   public class PlayerController : MonoBehaviour
   {
     [SerializeField] CursorMapping[] _mappings;
-    [SerializeField] float _maxNavPathLength = 40, _maxNavProjectionDistance = 1;
+    [SerializeField] float _maxNavProjectionDistance = 1, _raycastRadius = 1;
     Mover _mover;
     Fighter _fighter;
     Health _health;
@@ -59,9 +59,9 @@ namespace RPG.Control
       return false;
     }
 
-    static RaycastHit[] RaycastSorted()
+    RaycastHit[] RaycastSorted()
     {
-      var hits = Physics.RaycastAll(MouseRay);
+      var hits = Physics.SphereCastAll(MouseRay, _raycastRadius);
       Array.Sort(hits.Select(h => h.distance).ToArray(), hits);
       return hits;
     }
@@ -90,6 +90,7 @@ namespace RPG.Control
       var hasHit = RaycastNavmesh(out var target);
       if (hasHit)
       {
+        if (!_mover.CanMoveTo(target)) return false;
         if (Input.GetMouseButton(0))
           _mover.StartMoveAction(target);
         SetCursor(CursorType.Movement);
@@ -105,20 +106,7 @@ namespace RPG.Control
       var hasCastToNavMesh = NavMesh.SamplePosition(hit.point, out var navMeshHit, _maxNavProjectionDistance, NavMesh.AllAreas);
       if (!hasCastToNavMesh) return false;
       target = navMeshHit.position;
-      NavMeshPath path = new();
-      bool hasPath = NavMesh.CalculatePath(transform.position, target, NavMesh.AllAreas, path);
-      if (!hasPath || path.status != NavMeshPathStatus.PathComplete) return false;
-      if (_maxNavPathLength < GetPathLength(path)) return false;
       return true;
-    }
-
-    float GetPathLength(NavMeshPath path)
-    {
-      float total = 0;
-      if (path.corners.Length < 2) return total;
-      for (int i = 1; i < path.corners.Length; ++i)
-        total += Vector3.Distance(path.corners[i], path.corners[i - 1]);
-      return total;
     }
 
     [Serializable]

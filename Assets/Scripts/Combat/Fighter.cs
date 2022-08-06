@@ -110,6 +110,7 @@ namespace RPG.Combat
     {
       if (target is null)
         return false;
+      if (!_mover.CanMoveTo(target.transform.position) && !InRange) return false;
       var targetHealth = target.GetComponent<Health>();
       return targetHealth != null && !targetHealth.IsDead;
     }
@@ -129,7 +130,7 @@ namespace RPG.Combat
       {
         _curWeaponCfg.LaunchProjectile(_lHandTransform, _rHandTransform, _target, gameObject, Dmg);
       }
-      else
+      else if (InRange)
       {
         _target.TakeDamage(gameObject, Dmg);
       }

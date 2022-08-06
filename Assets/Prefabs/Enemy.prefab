@@ -4787,7 +4787,7 @@ PrefabInstance:
     - target: {fileID: 548326135373387986, guid: bcfbde54294311446a1f9936cea17b11,
         type: 3}
       propertyPath: m_RootOrder
-      value: 18
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 1357222644058594258, guid: bcfbde54294311446a1f9936cea17b11,
         type: 3}
@@ -4814,6 +4814,41 @@ PrefabInstance:
       propertyPath: _rHandTransform
       value: 
       objectReference: {fileID: 3933085842493662272}
+    - target: {fileID: 2647727688974374750, guid: bcfbde54294311446a1f9936cea17b11,
+        type: 3}
+      propertyPath: _takeDmg.m_PersistentCalls.m_Calls.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2647727688974374750, guid: bcfbde54294311446a1f9936cea17b11,
+        type: 3}
+      propertyPath: _takeDmg.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2647727688974374750, guid: bcfbde54294311446a1f9936cea17b11,
+        type: 3}
+      propertyPath: _takeDmg.m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      value: 
+      objectReference: {fileID: 848935326145748794}
+    - target: {fileID: 2647727688974374750, guid: bcfbde54294311446a1f9936cea17b11,
+        type: 3}
+      propertyPath: _takeDmg.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2647727688974374750, guid: bcfbde54294311446a1f9936cea17b11,
+        type: 3}
+      propertyPath: _takeDmg.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
+      value: Aggrevate
+      objectReference: {fileID: 0}
+    - target: {fileID: 2647727688974374750, guid: bcfbde54294311446a1f9936cea17b11,
+        type: 3}
+      propertyPath: _takeDmg.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
+      value: RPG.Control.AIController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2647727688974374750, guid: bcfbde54294311446a1f9936cea17b11,
+        type: 3}
+      propertyPath: _takeDmg.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 4458522912591989062, guid: bcfbde54294311446a1f9936cea17b11,
         type: 3}
       propertyPath: m_audioClip
@@ -4854,10 +4889,15 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8143980102001109157, guid: bcfbde54294311446a1f9936cea17b11,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 19
+      objectReference: {fileID: 0}
     - target: {fileID: 8598281244614837431, guid: bcfbde54294311446a1f9936cea17b11,
         type: 3}
       propertyPath: m_RootOrder
-      value: 17
+      value: 18
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bcfbde54294311446a1f9936cea17b11, type: 3}
@@ -4883,6 +4923,8 @@ MonoBehaviour:
   _suspcionTime: 5
   _waypointTolerance: 1
   _waypointWaitTime: 5
+  _agroCDTime: 3
+  _shoutDistance: 4
   _patrolFraction: 0.3
   _patrolPath: {fileID: 0}
 --- !u!114 &4153788585853850608

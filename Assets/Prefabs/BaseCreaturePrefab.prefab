@@ -354,7 +354,7 @@ GameObject:
   - component: {fileID: 4512699418055506121}
   m_Layer: 0
   m_Name: BaseCreaturePrefab
-  m_TagString: Player
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -446,6 +446,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxSpd: 6
+  _maxNavPathLength: 40
 --- !u!114 &2647727688974374723
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -460,8 +461,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _lHandTransform: {fileID: 0}
   _rHandTransform: {fileID: 0}
-  _defWeapon: {fileID: 11400000, guid: d9d258667d0801740bec92f1034dd9a3, type: 2}
-  _defWeaponName: Unarmed
+  _defWeapon: {fileID: 11400000, guid: 104e6bd5b9d00074fadb68cfb27600a4, type: 2}
 --- !u!114 &2647727688974374748
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -16,7 +16,6 @@ Material:
   - MOON
   - STARS
   - STARS_LAYER_0
-  - SUN
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -55,7 +54,6 @@ Material:
   - MOON
   - STARS
   - STARS_LAYER_0
-  - SUN
   m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -152,7 +150,7 @@ Material:
     - _StarsColor1: {r: 0, g: 0, b: 0, a: 0}
     - _StarsColor2: {r: 0, g: 0, b: 0, a: 0}
     - _SunColor: {r: 1, g: 0.9700814, b: 0.9009434, a: 1}
-    - _SunDirection: {r: 0, g: -1.0000001, b: -0.00000011920929, a: 0}
+    - _SunDirection: {r: 0, g: 0, b: 1, a: 0}
     - _SunLightColor: {r: 1, g: 0.9929226, b: 0.9009434, a: 1}
   m_BuildTextureStacks: []
 --- !u!114 &11400000
@@ -198,7 +196,7 @@ MonoBehaviour:
   useBakedStars: 0
   starsCubemap: {fileID: 0}
   starsTwinkleMap: {fileID: 0}
-  enableSun: 1
+  enableSun: 0
   sunTexture: {fileID: 0}
   sunColor: {r: 1, g: 0.9700814, b: 0.9009434, a: 1}
   sunSize: 0.07

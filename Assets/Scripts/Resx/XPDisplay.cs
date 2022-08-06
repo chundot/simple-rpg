@@ -1,3 +1,4 @@
+using RPG.Manager;
 using RPG.Stats;
 using UnityEngine;
 using UnityEngine.UI;
@@ -10,8 +11,11 @@ namespace RPG.Resx
     Text _text;
     void Awake()
     {
-      _xp = GameObject.FindGameObjectWithTag("Player").GetComponent<Experience>();
       _text = GetComponent<Text>();
+    }
+    void Start()
+    {
+      _xp = SceneMgr.Self.Player.GetComponent<Experience>();
     }
     void Update()
     {

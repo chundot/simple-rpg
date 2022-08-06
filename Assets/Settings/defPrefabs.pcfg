@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<PrefabConfig>
+	<PrefabTags>
+	</PrefabTags>
+	<PrefabCategories>
+		<Category>
+			<Name>Default</Name>
+		</Category>
+		<Category>
+			<Name>Fence</Name>
+		</Category>
+		<Category>
+			<Name>House</Name>
+		</Category>
+	</PrefabCategories>
+		<PrefabScrollViewLookAndFeel>
+			<NumPrefabsPerRow>6</NumPrefabsPerRow>
+			<PrefabPreviewScale>1</PrefabPreviewScale>
+			<PrefabScrollViewHeight>200</PrefabScrollViewHeight>
+			<ActivePrefabTint>0.639,0.909,1,1</ActivePrefabTint>
+			<ShowPrefabNames>False</ShowPrefabNames>
+			<PrefabNameLabelColor>0,0,0,1</PrefabNameLabelColor>
+		</PrefabScrollViewLookAndFeel>
+</PrefabConfig>

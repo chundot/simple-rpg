@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 502168013983742751}
   - component: {fileID: 2407407366651093947}
   m_Layer: 0
-  m_Name: Hammer2
+  m_Name: Hammer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

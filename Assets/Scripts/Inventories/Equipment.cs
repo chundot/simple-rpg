@@ -7,38 +7,38 @@ namespace RPG.Inventories
 {
   public class Equipment : MonoBehaviour, ISaveable
   {
-    Dictionary<EquipLocation, EquipableItem> equippedItems = new();
+    Dictionary<EquipLocation, EquipableItem> _equippedItems = new();
     public event Action EquipmentUpdated;
-    public IEnumerable<EquipLocation> AllPopulatedSlots => equippedItems.Keys;
+    public IEnumerable<EquipLocation> AllPopulatedSlots => _equippedItems.Keys;
     public EquipableItem GetItemInSlot(EquipLocation equipLocation)
     {
-      return !equippedItems.ContainsKey(equipLocation) ? null : equippedItems[equipLocation];
+      return !_equippedItems.ContainsKey(equipLocation) ? null : _equippedItems[equipLocation];
     }
     public void AddItem(EquipLocation slot, EquipableItem item)
     {
       Debug.Assert(item.AllowedEquipLocation == slot);
 
-      equippedItems[slot] = item;
+      _equippedItems[slot] = item;
 
       EquipmentUpdated?.Invoke();
     }
     public void RemoveItem(EquipLocation slot)
     {
-      equippedItems.Remove(slot);
+      _equippedItems.Remove(slot);
       EquipmentUpdated?.Invoke();
     }
 
     object ISaveable.CaptureState()
     {
       Dictionary<EquipLocation, string> equippedItemsForSerialization = new();
-      foreach (var pair in equippedItems)
+      foreach (var pair in _equippedItems)
         equippedItemsForSerialization[pair.Key] = pair.Value.ItemID;
       return equippedItemsForSerialization;
     }
 
     void ISaveable.RestoreState(object state)
     {
-      equippedItems = new Dictionary<EquipLocation, EquipableItem>();
+      _equippedItems = new Dictionary<EquipLocation, EquipableItem>();
 
       var equippedItemsForSerialization = state as Dictionary<EquipLocation, string>;
 
@@ -46,7 +46,7 @@ namespace RPG.Inventories
       {
         var item = InventoryItem.GetFromID(pair.Value) as EquipableItem;
         if (item != null)
-          equippedItems[pair.Key] = item;
+          _equippedItems[pair.Key] = item;
       }
     }
   }

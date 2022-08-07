@@ -1,5 +1,7 @@
+using System;
 using System.Collections.Generic;
 using RPG.Core;
+using RPG.Inventories;
 using RPG.Movement;
 using RPG.Resx;
 using RPG.Saving;
@@ -15,6 +17,7 @@ namespace RPG.Combat
     [SerializeField] Transform _lHandTransform, _rHandTransform;
     [SerializeField] WeaponConfig _defWeapon;
     WeaponConfig _curWeaponCfg;
+    Equipment _equipment;
     LazyValue<Weapon> _curWeapon;
     Health _target;
     Mover _mover;
@@ -37,7 +40,16 @@ namespace RPG.Combat
       _stats = GetComponent<BaseStats>();
       _curWeaponCfg = _defWeapon;
       _curWeapon = new(() => AttachWeapon(_defWeapon));
+      if (TryGetComponent(out _equipment))
+        _equipment.EquipmentUpdated += UpdateWeapon;
     }
+
+    void UpdateWeapon()
+    {
+      var weapon1 = _equipment.GetItemInSlot(EquipLocation.Weapon) as WeaponConfig;
+      EquipWeapon(weapon1 ? weapon1 : _defWeapon);
+    }
+
     void Start()
     {
       _curWeapon.ForceInit();

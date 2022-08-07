@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using RPG.Saving;
+using UnityEngine.AI;
 
 namespace RPG.Inventories
 {
@@ -19,6 +20,8 @@ namespace RPG.Inventories
 
     protected virtual Vector3 GetDropLocation()
     {
+      if (NavMesh.SamplePosition(transform.position, out var hit, .1f, NavMesh.AllAreas))
+        return hit.position;
       return transform.position;
     }
 

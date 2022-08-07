@@ -4816,9 +4816,24 @@ PrefabInstance:
       objectReference: {fileID: 3933085842493662272}
     - target: {fileID: 2647727688974374750, guid: bcfbde54294311446a1f9936cea17b11,
         type: 3}
+      propertyPath: _onDie.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2647727688974374750, guid: bcfbde54294311446a1f9936cea17b11,
+        type: 3}
       propertyPath: _takeDmg.m_PersistentCalls.m_Calls.Array.size
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 2647727688974374750, guid: bcfbde54294311446a1f9936cea17b11,
+        type: 3}
+      propertyPath: _onDie.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2647727688974374750, guid: bcfbde54294311446a1f9936cea17b11,
+        type: 3}
+      propertyPath: _onDie.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 7583323573643960637}
     - target: {fileID: 2647727688974374750, guid: bcfbde54294311446a1f9936cea17b11,
         type: 3}
       propertyPath: _takeDmg.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
@@ -4831,6 +4846,16 @@ PrefabInstance:
       objectReference: {fileID: 848935326145748794}
     - target: {fileID: 2647727688974374750, guid: bcfbde54294311446a1f9936cea17b11,
         type: 3}
+      propertyPath: _onDie.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2647727688974374750, guid: bcfbde54294311446a1f9936cea17b11,
+        type: 3}
+      propertyPath: _onDie.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: RndDrop
+      objectReference: {fileID: 0}
+    - target: {fileID: 2647727688974374750, guid: bcfbde54294311446a1f9936cea17b11,
+        type: 3}
       propertyPath: _takeDmg.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
       value: 2
       objectReference: {fileID: 0}
@@ -4841,8 +4866,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2647727688974374750, guid: bcfbde54294311446a1f9936cea17b11,
         type: 3}
+      propertyPath: _onDie.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: RPG.Inventories.RandomDropper, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2647727688974374750, guid: bcfbde54294311446a1f9936cea17b11,
+        type: 3}
       propertyPath: _takeDmg.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
       value: RPG.Control.AIController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2647727688974374750, guid: bcfbde54294311446a1f9936cea17b11,
+        type: 3}
+      propertyPath: _onDie.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 2647727688974374750, guid: bcfbde54294311446a1f9936cea17b11,
         type: 3}
@@ -4939,6 +4974,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 264dbc281e25f834fa19cabac383e1a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &7583323573643960637
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1465300230979984216}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3b500e190e2ee84988577d45b098cf5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _scatterDistance: 1.5
+  _dropLib:
+  - {fileID: 11400000, guid: 57aee636ca038004682ed36ca467d313, type: 2}
+  _numOfDrops: 2
 --- !u!4 &1466225225889301642 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7299530098587361568, guid: bcfbde54294311446a1f9936cea17b11,

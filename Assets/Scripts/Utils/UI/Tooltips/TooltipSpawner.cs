@@ -70,6 +70,11 @@ namespace RPG.Core.UI.Tooltips
 
     void IPointerExitHandler.OnPointerExit(PointerEventData eventData)
     {
+
+      if (!eventData.fullyExited)
+        return;
+      // if (eventData.pointerCurrentRaycast.gameObject.transform.IsChildOf(transform))
+      //   return;
       ClearTooltip();
     }
 

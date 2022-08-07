@@ -1,4 +1,3 @@
-using System;
 using RPG.Core;
 using RPG.Saving;
 using RPG.Stats;
@@ -12,6 +11,7 @@ namespace RPG.Resx
   {
     [SerializeField] UnityEvent<float> _takeDmg, _setFill;
     [SerializeField] UnityEvent<bool> _changeBar;
+    [SerializeField] UnityEvent _onDie;
     Animator _animator;
     BaseStats _stats;
     LazyValue<float> _curHealth;
@@ -64,6 +64,7 @@ namespace RPG.Resx
 
     void Die()
     {
+      _onDie?.Invoke();
       _changeBar?.Invoke(false);
       _animator.SetTrigger("Die");
       GetComponent<ActionScheduler>().CancelCurAction();

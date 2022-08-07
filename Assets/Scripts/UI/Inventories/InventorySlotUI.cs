@@ -1,6 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.EventSystems;
 using RPG.Inventories;
 using RPG.Core.UI.Dragging;
 

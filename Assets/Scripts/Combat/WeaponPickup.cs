@@ -10,6 +10,7 @@ namespace RPG.Combat
     [SerializeField] WeaponConfig _weapon;
     [SerializeField] float _healthRegen = 0;
     Collider _collider;
+    public CursorType CursorType => CursorType.Loot;
     void Awake()
     {
       _collider = GetComponent<Collider>();
@@ -51,9 +52,5 @@ namespace RPG.Combat
       return true;
     }
 
-    public CursorType GetCursorType()
-    {
-      return CursorType.Loot;
-    }
   }
 }

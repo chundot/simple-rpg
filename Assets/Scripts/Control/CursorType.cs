@@ -6,6 +6,7 @@ namespace RPG.Control
     Movement,
     Attack,
     UI,
-    Loot
+    Loot,
+    Full
   }
 }

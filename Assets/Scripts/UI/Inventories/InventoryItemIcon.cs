@@ -26,7 +26,6 @@ namespace RPG.UI.Inventories
         iconImage.enabled = true;
         iconImage.sprite = item.Icon;
       }
-
       if (_itemNumber)
       {
         if (number <= 1)

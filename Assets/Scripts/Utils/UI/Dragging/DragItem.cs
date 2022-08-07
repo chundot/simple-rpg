@@ -6,25 +6,25 @@ namespace RPG.Core.UI.Dragging
   public class DragItem<T> : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
       where T : class
   {
-    Vector3 startPosition;
-    Transform originalParent;
-    IDragSource<T> source;
+    Vector3 _startPosition;
+    Transform _originalParent;
+    IDragSource<T> _source;
 
-    Canvas parentCanvas;
+    Canvas _parentCanvas;
 
     void Awake()
     {
-      parentCanvas = GetComponentInParent<Canvas>();
-      source = GetComponentInParent<IDragSource<T>>();
+      _parentCanvas = GetComponentInParent<Canvas>();
+      _source = GetComponentInParent<IDragSource<T>>();
     }
 
     void IBeginDragHandler.OnBeginDrag(PointerEventData eventData)
     {
-      startPosition = transform.position;
-      originalParent = transform.parent;
+      _startPosition = transform.position;
+      _originalParent = transform.parent;
       // 
       GetComponent<CanvasGroup>().blocksRaycasts = false;
-      transform.SetParent(parentCanvas.transform, true);
+      transform.SetParent(_parentCanvas.transform, true);
     }
 
     void IDragHandler.OnDrag(PointerEventData eventData)
@@ -34,11 +34,12 @@ namespace RPG.Core.UI.Dragging
 
     void IEndDragHandler.OnEndDrag(PointerEventData eventData)
     {
-      transform.position = startPosition;
+      transform.position = _startPosition;
       GetComponent<CanvasGroup>().blocksRaycasts = true;
-      transform.SetParent(originalParent, true);
+      transform.SetParent(_originalParent, true);
 
-      if (parentCanvas.TryGetComponent(out IDragDestination<T> container))
+      var container = !EventSystem.current.IsPointerOverGameObject() ? _parentCanvas.GetComponent<IDragDestination<T>>() : GetContainer(eventData);
+      if (container != null)
         DropItemIntoContainer(container);
     }
 
@@ -54,9 +55,9 @@ namespace RPG.Core.UI.Dragging
 
     void DropItemIntoContainer(IDragDestination<T> destination)
     {
-      if (ReferenceEquals(destination, source)) return;
+      if (ReferenceEquals(destination, _source)) return;
 
-      if (destination is not IDragContainer<T> destinationContainer || source is not IDragContainer<T> sourceContainer ||
+      if (destination is not IDragContainer<T> destinationContainer || _source is not IDragContainer<T> sourceContainer ||
           destinationContainer.Item == null ||
           ReferenceEquals(destinationContainer.Item, sourceContainer.Item))
       {
@@ -67,7 +68,7 @@ namespace RPG.Core.UI.Dragging
       AttemptSwap(destinationContainer, sourceContainer);
     }
 
-    private void AttemptSwap(IDragContainer<T> destination, IDragContainer<T> source)
+    void AttemptSwap(IDragContainer<T> destination, IDragContainer<T> source)
     {
       var removedSourceNumber = source.Number;
       var removedSourceItem = source.Item;
@@ -107,15 +108,15 @@ namespace RPG.Core.UI.Dragging
 
     bool AttemptSimpleTransfer(IDragDestination<T> destination)
     {
-      var draggingItem = source.Item;
-      var draggingNumber = source.Number;
+      var draggingItem = _source.Item;
+      var draggingNumber = _source.Number;
 
       var acceptable = destination.MaxAcceptable(draggingItem);
       var toTransfer = Mathf.Min(acceptable, draggingNumber);
 
       if (toTransfer > 0)
       {
-        source.RemoveItems(toTransfer);
+        _source.RemoveItems(toTransfer);
         destination.AddItems(draggingItem, toTransfer);
         return false;
       }

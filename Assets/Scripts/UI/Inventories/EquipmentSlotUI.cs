@@ -6,8 +6,6 @@ namespace RPG.UI.Inventories
 {
   public class EquipmentSlotUI : MonoBehaviour, IItemHolder, IDragContainer<InventoryItem>
   {
-    // CONFIG DATA
-
     [SerializeField] InventoryItemIcon icon = null;
     [SerializeField] EquipLocation equipLocation = EquipLocation.Weapon;
 
@@ -29,7 +27,7 @@ namespace RPG.UI.Inventories
 
     public int MaxAcceptable(InventoryItem item)
     {
-      EquipableItem equipableItem = item as EquipableItem;
+      var equipableItem = item as EquipableItem;
       if (!equipableItem) return 0;
       if (equipableItem.AllowedEquipLocation != equipLocation) return 0;
       if (Item) return 0;
@@ -39,7 +37,7 @@ namespace RPG.UI.Inventories
 
     public void AddItems(InventoryItem item, int number)
     {
-      playerEquipment.AddItem(equipLocation, (EquipableItem)item);
+      playerEquipment.AddItem(equipLocation, item as EquipableItem);
     }
 
     public void RemoveItems(int number)

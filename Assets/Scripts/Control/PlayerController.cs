@@ -17,6 +17,7 @@ namespace RPG.Control
     Mover _mover;
     Fighter _fighter;
     Health _health;
+    bool _isDraggingUI = false;
     static Ray MouseRay { get => Camera.main.ScreenPointToRay(Input.mousePosition); }
     public Fighter Fighter { get => _fighter; }
     public Mover Mover { get => _mover; }
@@ -51,7 +52,7 @@ namespace RPG.Control
         {
           if (raycastable.HandleRaycast(this))
           {
-            SetCursor(raycastable.GetCursorType());
+            SetCursor(raycastable.CursorType);
             return true;
           }
         }
@@ -68,12 +69,16 @@ namespace RPG.Control
 
     bool InteractWithUI()
     {
+      if (Input.GetMouseButtonUp(0))
+        _isDraggingUI = false;
       if (EventSystem.current.IsPointerOverGameObject())
       {
         SetCursor(CursorType.UI);
+        if (Input.GetMouseButtonDown(0))
+          _isDraggingUI = true;
         return true;
       }
-      return false;
+      return _isDraggingUI;
     }
 
     void SetCursor(CursorType type)

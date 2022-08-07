@@ -21,14 +21,7 @@ namespace RPG.Inventories
 
     public int Size => _slots.Length;
 
-    public static Inventory PlayerInventory
-    {
-      get
-      {
-        var player = GameObject.FindWithTag("Player");
-        return player.GetComponent<Inventory>();
-      }
-    }
+    public static Inventory PlayerInventory => GameObject.FindWithTag("Player").GetComponent<Inventory>();
 
     public bool HasSpaceFor(InventoryItem item)
     {
@@ -38,7 +31,6 @@ namespace RPG.Inventories
     public bool AddToFirstEmptySlot(InventoryItem item, int number)
     {
       int i = FindSlot(item);
-
       if (i < 0)
         return false;
 
@@ -103,13 +95,11 @@ namespace RPG.Inventories
     {
       int i = FindStack(item);
       if (i < 0)
-      {
         i = FindEmptySlot();
-      }
       return i;
     }
 
-    private int FindEmptySlot()
+    int FindEmptySlot()
     {
       for (int i = 0; i < _slots.Length; i++)
       {

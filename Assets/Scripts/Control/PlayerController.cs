@@ -1,6 +1,7 @@
 using System;
 using System.Linq;
 using RPG.Combat;
+using RPG.Inventories;
 using RPG.Manager;
 using RPG.Movement;
 using RPG.Resx;
@@ -17,6 +18,7 @@ namespace RPG.Control
     Mover _mover;
     Fighter _fighter;
     Health _health;
+    ActionStore _actionStore;
     bool _isDraggingUI = false;
     static Ray MouseRay { get => Camera.main.ScreenPointToRay(Input.mousePosition); }
     public Fighter Fighter { get => _fighter; }
@@ -27,10 +29,12 @@ namespace RPG.Control
       _mover = GetComponent<Mover>();
       _fighter = GetComponent<Fighter>();
       _health = GetComponent<Health>();
+      _actionStore = GetComponent<ActionStore>();
     }
 
     void Update()
     {
+      InteractWithAction();
       if (InteractWithUI()) return;
       if (_health.IsDead)
       {
@@ -40,6 +44,22 @@ namespace RPG.Control
       if (InteractWithComponent()) return;
       if (InteractWithMovement()) return;
       SetCursor(CursorType.None);
+    }
+
+    void InteractWithAction()
+    {
+      if (Input.GetKeyDown(KeyCode.Alpha1))
+        _actionStore.Use(0, gameObject);
+      if (Input.GetKeyDown(KeyCode.Alpha2))
+        _actionStore.Use(1, gameObject);
+      if (Input.GetKeyDown(KeyCode.Alpha3))
+        _actionStore.Use(2, gameObject);
+      if (Input.GetKeyDown(KeyCode.Alpha4))
+        _actionStore.Use(3, gameObject);
+      if (Input.GetKeyDown(KeyCode.Alpha5))
+        _actionStore.Use(4, gameObject);
+      if (Input.GetKeyDown(KeyCode.Alpha6))
+        _actionStore.Use(5, gameObject);
     }
 
     bool InteractWithComponent()

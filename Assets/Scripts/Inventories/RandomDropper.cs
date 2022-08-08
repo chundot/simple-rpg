@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+using RPG.Stats;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -9,8 +8,7 @@ namespace RPG.Inventories
   {
     [Tooltip("掉落物零散距离.")]
     [SerializeField] float _scatterDistance = 1f;
-    [SerializeField] InventoryItem[] _dropLib;
-    [SerializeField] int _numOfDrops = 2;
+    [SerializeField] DropLibrary _dropLib;
     const int ATTEMPTS = 10;
     protected override Vector3 GetDropLocation()
     {
@@ -24,11 +22,9 @@ namespace RPG.Inventories
     }
     public void RndDrop()
     {
-      for (int i = 0; i < _numOfDrops; ++i)
-      {
-        var item = _dropLib[Random.Range(0, _dropLib.Length)];
-        DropItem(item, 1);
-      }
+      var stats = GetComponent<BaseStats>();
+      foreach (var drop in _dropLib.GetRndDrops(stats.Level))
+        DropItem(drop.Item, drop.Num);
     }
   }
 }

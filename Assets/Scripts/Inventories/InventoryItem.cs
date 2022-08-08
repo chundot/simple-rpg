@@ -35,6 +35,11 @@ namespace RPG.Inventories
         var itemList = Resources.LoadAll<InventoryItem>("");
         foreach (var item in itemList)
         {
+          if (item._itemID is null)
+          {
+            Debug.Log(item);
+            continue;
+          }
           if (_itemLookupCache.ContainsKey(item._itemID))
           {
             Debug.LogError(string.Format("duplicate RPG.UI.InventorySystem ID for objects: {0} and {1}", _itemLookupCache[item._itemID], item));

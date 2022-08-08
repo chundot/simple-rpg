@@ -1,3 +1,4 @@
+using System;
 using RPG.Core;
 using RPG.Saving;
 using RPG.Stats;
@@ -23,6 +24,11 @@ namespace RPG.Resx
       _animator = GetComponent<Animator>();
       _stats = GetComponent<BaseStats>();
       _curHealth = new(() => _stats.MaxHealth);
+    }
+
+    public void HealByPercentage(float percentage)
+    {
+      Heal(percentage / 100 * _stats.MaxHealth);
     }
 
     public void Heal(float healthRegen)

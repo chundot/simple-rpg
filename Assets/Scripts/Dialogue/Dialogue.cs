@@ -8,8 +8,7 @@ namespace RPG.Dialogue
   [CreateAssetMenu(fileName = "Dialogue", menuName = "RPG/Dialogue", order = 0)]
   public class Dialogue : ScriptableObject, ISerializationCallbackReceiver
   {
-    [SerializeField]
-    List<DialogueNode> _nodes = new();
+    [SerializeField] List<DialogueNode> _nodes = new();
     Vector2 _newNodeOffset = new(250, 50);
     readonly Dictionary<string, DialogueNode> _nodeDic = new();
     private void OnValidate()
@@ -19,19 +18,31 @@ namespace RPG.Dialogue
         if (node != null)
           _nodeDic[node.name] = node;
     }
+
+    public IEnumerable<DialogueNode> GetPlayerChildren(DialogueNode curNode)
+    {
+      foreach (var child in GetAllChildren(curNode))
+        if (child.IsPlayerSpeaking)
+          yield return child;
+    }
+
+    public IEnumerable<DialogueNode> GetAIChildren(DialogueNode curNode)
+    {
+      foreach (var child in GetAllChildren(curNode))
+        if (!child.IsPlayerSpeaking)
+          yield return child;
+    }
 #if UNITY_EDITOR
     public IEnumerable<DialogueNode> Nodes
     {
       get => _nodes;
     }
-    public DialogueNode GetRootNode() => _nodes[0];
+    public DialogueNode RootNode => _nodes[0];
     public IEnumerable<DialogueNode> GetAllChildren(DialogueNode parent)
     {
-      List<DialogueNode> res = new();
       foreach (var childID in parent.Children)
         if (_nodeDic.TryGetValue(childID, out var val))
-          res.Add(val);
-      return res;
+          yield return val;
     }
     public void CreateNode(DialogueNode node = null, bool record = true)
     {

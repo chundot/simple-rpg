@@ -203,8 +203,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: This item is really cool. It will give you a +1 to all your attacks. Yey!
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 9f6ad3d34902abe468e05d8fd8881c14, type: 2}
-  m_sharedMaterial: {fileID: 975152087913938562, guid: 9f6ad3d34902abe468e05d8fd8881c14,
+  m_fontAsset: {fileID: 11400000, guid: 26d9ba93c3299514f921dd248720adf0, type: 2}
+  m_sharedMaterial: {fileID: -819016669556738952, guid: 26d9ba93c3299514f921dd248720adf0,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -339,8 +339,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Sample Item Title
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 9f6ad3d34902abe468e05d8fd8881c14, type: 2}
-  m_sharedMaterial: {fileID: 975152087913938562, guid: 9f6ad3d34902abe468e05d8fd8881c14,
+  m_fontAsset: {fileID: 11400000, guid: 26d9ba93c3299514f921dd248720adf0, type: 2}
+  m_sharedMaterial: {fileID: -819016669556738952, guid: 26d9ba93c3299514f921dd248720adf0,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}

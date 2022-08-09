@@ -36,7 +36,7 @@ namespace RPG.Combat
     void OnTriggerEnter(Collider other)
     {
       if (other.GetComponent<Health>() != _target || _target.IsDead) return;
-      _onHit?.Invoke();
+      _onHit.Invoke();
       _spd = 0;
       _target.TakeDamage(_from, _dmg);
       if (_hitFX != null)

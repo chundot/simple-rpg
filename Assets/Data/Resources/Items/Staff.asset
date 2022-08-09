@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c6c1099ea6de214a8eccb5e4df389a4, type: 3}
+  m_Name: Staff
+  m_EditorClassIdentifier: 
+  _itemID: 965d1445-da58-4f1b-aa76-38a2c489c129
+  _displayName: "\u706B\u7403\u6CD5\u6756"
+  _description: "\u706B\u7403\u6CD5\u6756\uFF0C\u80FD\u53D1\u51FA\u706B\u7403\u7684\u6CD5\u6756\uFF0C\u5F31\u667A\u4E5F\u53EF\u4F7F\u7528"
+  _icon: {fileID: 21300000, guid: 5e41d7b5c93e77776b0406c285b84617, type: 3}
+  _pickup: {fileID: 5375449628833015432, guid: c357697837636084b94719c1ef91774c, type: 3}
+  _stackable: 0
+  _allowedEquipLocation: 5
+  _weaponAnimator: {fileID: 22100000, guid: 411f142b5912b2342bce0967ad1f0129, type: 2}
+  _weaponPrefab: {fileID: 7037453468270824804, guid: a0cbd8492f2433d4f96ba060f970aa6d,
+    type: 3}
+  _range: 3.5
+  _dmg: 8
+  _cd: 3
+  _extraPercent: 0
+  _isRightHanded: 1
+  _projectile: {fileID: 4331012442421576027, guid: d5af68ede6ccc5b4ca21abd0d1415dec,
+    type: 3}

@@ -32,7 +32,7 @@ namespace RPG.Inventories
       if (_itemLookupCache == null)
       {
         _itemLookupCache = new();
-        var itemList = Resources.LoadAll<InventoryItem>("");
+        var itemList = Resources.LoadAll<InventoryItem>("Items");
         foreach (var item in itemList)
         {
           if (item._itemID is null)

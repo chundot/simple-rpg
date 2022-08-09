@@ -32,6 +32,7 @@ namespace RPG.Combat
     public Health Target { get => _target; }
     public float Dmg { get => _stats.Dmg; }
     const string WEAPON_NAME = "Weapon";
+    const string WEAPON_PATH = "Items";
     void Awake()
     {
       _mover = GetComponent<Mover>();
@@ -160,7 +161,7 @@ namespace RPG.Combat
     public void RestoreState(object state)
     {
       if (state is not string s) return;
-      var weapon = Resources.Load<WeaponConfig>(s);
+      var weapon = Resources.Load<WeaponConfig>($"{WEAPON_PATH}/{s}");
       EquipWeapon(weapon);
     }
 

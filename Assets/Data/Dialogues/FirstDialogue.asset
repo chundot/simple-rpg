@@ -1,5 +1,51 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-6428848948966083412
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef41b43ae994d444f9f1dc7237cf2c15, type: 3}
+  m_Name: 292fa258-9af3-4a3a-a1c0-9dac88ce6f22
+  m_EditorClassIdentifier: 
+  _isPlayerSpeaking: 0
+  _text: "\u624B\u65E0\u5BF8\u94C1\u600E\u4E48\u89E3\u51B3\uFF1F\u53BB\u9644\u4EF6\u7684\u5730\u65B9\u770B\u770B\u6709\u6CA1\u6709\u6B66\u5668\u5427\uFF01"
+  _children: []
+  _rect:
+    serializedVersion: 2
+    x: 884
+    y: 155
+    width: 200
+    height: 100
+  _onEnterAction: 
+  _onExitAction: 
+--- !u!114 &-3360096506640570922
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef41b43ae994d444f9f1dc7237cf2c15, type: 3}
+  m_Name: e75c14ef-7f33-4bab-9c1f-9c0a8dcef064
+  m_EditorClassIdentifier: 
+  _isPlayerSpeaking: 0
+  _text: "\u5509...\u5C31\u6CA1\u522B\u7684\u529E\u6CD5\u4E86\u5417..."
+  _children: []
+  _rect:
+    serializedVersion: 2
+    x: 925
+    y: 322
+    width: 200
+    height: 100
+  _onEnterAction: 
+  _onExitAction: 
 --- !u!114 &-2031525783650130314
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14,13 +60,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _isPlayerSpeaking: 1
   _text: "\u6362\u6761\u8DEF\u5427\u3002"
-  _children: []
+  _children:
+  - e75c14ef-7f33-4bab-9c1f-9c0a8dcef064
   _rect:
     serializedVersion: 2
-    x: 591
-    y: 306
+    x: 571
+    y: 327
     width: 200
     height: 100
+  _onEnterAction: 
+  _onExitAction: 
 --- !u!114 &-1852372788768939139
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -39,10 +88,12 @@ MonoBehaviour:
   - 9ec14927-40c9-4a22-b1e0-9058bdac67fa
   _rect:
     serializedVersion: 2
-    x: 73
+    x: 72
     y: 212
     width: 200
     height: 100
+  _onEnterAction: 
+  _onExitAction: 
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -60,6 +111,8 @@ MonoBehaviour:
   - {fileID: 5407049752912109264}
   - {fileID: 1284153099459324914}
   - {fileID: -2031525783650130314}
+  - {fileID: -6428848948966083412}
+  - {fileID: -3360096506640570922}
 --- !u!114 &1284153099459324914
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -74,13 +127,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _isPlayerSpeaking: 1
   _text: "\u6211\u53EF\u4EE5\u53BB\u89E3\u51B3\u6389\uFF01"
-  _children: []
+  _children:
+  - 292fa258-9af3-4a3a-a1c0-9dac88ce6f22
   _rect:
     serializedVersion: 2
-    x: 582
+    x: 581
     y: 155
     width: 200
     height: 100
+  _onEnterAction: he1
+  _onExitAction: 
 --- !u!114 &5407049752912109264
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -100,7 +156,9 @@ MonoBehaviour:
   - 132cbb71-b721-4e91-bff4-a0e45a5e3827
   _rect:
     serializedVersion: 2
-    x: 341
-    y: 255
+    x: 331
+    y: 287
     width: 200
     height: 100
+  _onEnterAction: he1
+  _onExitAction: he2

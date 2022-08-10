@@ -7,6 +7,7 @@ namespace RPG.Control
     Attack,
     UI,
     Loot,
-    Full
+    Full,
+    Dialogue
   }
 }

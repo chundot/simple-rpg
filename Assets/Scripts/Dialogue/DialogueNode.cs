@@ -10,6 +10,9 @@ namespace RPG.Dialogue
     [SerializeField] string _text;
     [SerializeField] List<string> _children = new();
     [SerializeField] Rect _rect = new(0, 0, 200, 100);
+    [SerializeField] string _onEnterAction, _onExitAction;
+    public string OnEnterAction { get => _onEnterAction; }
+    public string OnExitAction { get => _onExitAction; }
     public string Text { get => _text; }
     public Rect Rect { get => _rect; }
     public bool IsPlayerSpeaking { get => _isPlayerSpeaking; }
@@ -24,7 +27,7 @@ namespace RPG.Dialogue
     public void SetText(string text)
     {
       Undo.RecordObject(this, "Update Dialgoue Text");
-      this._text = text;
+      _text = text;
       EditorUtility.SetDirty(this);
     }
     public void AddChild(DialogueNode childNode)

@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52ddcd61a5d563c43b601f3bcf68fa61, type: 3}
+  m_Name: FirstKillGoblin
+  m_EditorClassIdentifier: 
+  _title: "\u8DEF\u51B5\u4E0D\u4F73"
+  _objectives:
+  - "\u51FB\u8D25\u6C34\u4E95\u65C1\u7684\u54E5\u5E03\u6797"
+  - "\u51FB\u8D25\u5E10\u7BF7\u8FB9\u4E0A\u7684\u54E5\u5E03\u6797"
+  - "\u548C\u50E7\u4FA3\u4EA4\u8C08"

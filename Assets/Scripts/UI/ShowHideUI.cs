@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 namespace RPG.UI
 {
@@ -16,8 +17,13 @@ namespace RPG.UI
     {
       if (Input.GetKeyDown(_toggleKey))
       {
-        _uiContainer.SetActive(!_uiContainer.activeSelf);
+        Toggle();
       }
+    }
+
+    public void Toggle()
+    {
+      _uiContainer.SetActive(!_uiContainer.activeSelf);
     }
   }
 }

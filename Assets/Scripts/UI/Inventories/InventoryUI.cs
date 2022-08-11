@@ -21,8 +21,7 @@ namespace RPG.UI.Inventories
 
     void Redraw()
     {
-      foreach (Transform child in transform)
-        Destroy(child.gameObject);
+      transform.DestroyAllChildren();
 
       for (int i = 0; i < _playerInventory.Size; i++)
       {

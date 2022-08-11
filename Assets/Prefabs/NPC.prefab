@@ -4641,6 +4641,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2647727688974374723, guid: bcfbde54294311446a1f9936cea17b11,
+        type: 3}
+      propertyPath: _lHandTransform
+      value: 
+      objectReference: {fileID: 5737480063278738740}
+    - target: {fileID: 2647727688974374723, guid: bcfbde54294311446a1f9936cea17b11,
+        type: 3}
+      propertyPath: _rHandTransform
+      value: 
+      objectReference: {fileID: 3037007335839260474}
     - target: {fileID: 7296391235673472754, guid: bcfbde54294311446a1f9936cea17b11,
         type: 3}
       propertyPath: m_Name
@@ -4727,3 +4737,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62e2dbb695860c74a900d1d266b46264, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _dialogue: {fileID: 0}
+  Name: 

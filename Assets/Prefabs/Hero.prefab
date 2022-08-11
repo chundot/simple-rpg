@@ -4855,7 +4855,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 911588c528d87f54ebd930e2aa65e6aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _testDialogue: {fileID: 11400000, guid: e76d4f2e95265b14a95186943764eeea, type: 2}
+  _playerName: "\u9F99\u9E23"
 --- !u!114 &3898592995594275238
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4904,6 +4904,19 @@ MonoBehaviour:
     Hotspot: {x: 0, y: 0}
   _maxNavProjectionDistance: 1
   _raycastRadius: 1
+--- !u!114 &6558554475975587598
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5857258164711127475}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ac43b8631eaf5040bc8e566d69d526c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _statuses: []
 --- !u!114 &7085301228338562830
 MonoBehaviour:
   m_ObjectHideFlags: 0

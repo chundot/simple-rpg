@@ -6,9 +6,9 @@ namespace RPG.Core.UI.Tooltips
   public abstract class TooltipSpawner : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
   {
     [Tooltip("tooltip.")]
-    [SerializeField] GameObject _tooltipPrefab = null;
+    [SerializeField] protected GameObject TooltipPrefab = null;
 
-    GameObject tooltip = null;
+    GameObject _tooltip = null;
 
     public abstract void UpdateTooltip(GameObject tooltip);
 
@@ -28,15 +28,15 @@ namespace RPG.Core.UI.Tooltips
     {
       var parentCanvas = GetComponentInParent<Canvas>();
 
-      if (tooltip && !CanCreateTooltip)
+      if (_tooltip && !CanCreateTooltip)
         ClearTooltip();
 
-      if (!tooltip && CanCreateTooltip)
-        tooltip = Instantiate(_tooltipPrefab, parentCanvas.transform);
+      if (!_tooltip && CanCreateTooltip)
+        _tooltip = Instantiate(TooltipPrefab, parentCanvas.transform);
 
-      if (tooltip)
+      if (_tooltip)
       {
-        UpdateTooltip(tooltip);
+        UpdateTooltip(_tooltip);
         PositionTooltip();
       }
     }
@@ -46,7 +46,7 @@ namespace RPG.Core.UI.Tooltips
       Canvas.ForceUpdateCanvases();
 
       var tooltipCorners = new Vector3[4];
-      tooltip.GetComponent<RectTransform>().GetWorldCorners(tooltipCorners);
+      _tooltip.GetComponent<RectTransform>().GetWorldCorners(tooltipCorners);
       var slotCorners = new Vector3[4];
       GetComponent<RectTransform>().GetWorldCorners(slotCorners);
 
@@ -56,7 +56,7 @@ namespace RPG.Core.UI.Tooltips
       int slotCorner = GetCornerIndex(below, right);
       int tooltipCorner = GetCornerIndex(!below, !right);
 
-      tooltip.transform.position = slotCorners[slotCorner] - tooltipCorners[tooltipCorner] + tooltip.transform.position;
+      _tooltip.transform.position = slotCorners[slotCorner] - tooltipCorners[tooltipCorner] + _tooltip.transform.position;
     }
 
     int GetCornerIndex(bool below, bool right)
@@ -80,8 +80,8 @@ namespace RPG.Core.UI.Tooltips
 
     void ClearTooltip()
     {
-      if (tooltip)
-        Destroy(tooltip);
+      if (_tooltip)
+        Destroy(_tooltip);
     }
   }
 }

@@ -42,8 +42,7 @@ namespace RPG.UI
 
     private void BuildChoices()
     {
-      foreach (Transform item in _choiceRoot.transform)
-        Destroy(item.gameObject);
+      _choiceRoot.transform.DestroyAllChildren();
       foreach (var choice in _playerConversation.Choices)
       {
         var choiceInstance = Instantiate(_choicePrefab, _choiceRoot);

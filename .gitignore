@@ -1,6 +1,7 @@
 # Modified from:
 #     https://github.com/github/gitignore/blob/master/Unity.gitignore
-Assets/External
+Assets/External/**/*
+!Assets/External/*
 /[Ll]ibrary/
 /[Uu]serSettings/
 [Tt]emp/

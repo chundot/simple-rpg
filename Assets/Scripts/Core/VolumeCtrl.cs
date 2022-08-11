@@ -1,4 +1,3 @@
-using RPG.Resx;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;

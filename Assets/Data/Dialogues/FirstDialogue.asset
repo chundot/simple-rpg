@@ -135,8 +135,8 @@ MonoBehaviour:
     y: 155
     width: 200
     height: 100
-  _onEnterAction: he1
-  _onExitAction: 
+  _onEnterAction: 
+  _onExitAction: GiveQuest
 --- !u!114 &5407049752912109264
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -160,5 +160,5 @@ MonoBehaviour:
     y: 287
     width: 200
     height: 100
-  _onEnterAction: he1
-  _onExitAction: he2
+  _onEnterAction: 
+  _onExitAction: 

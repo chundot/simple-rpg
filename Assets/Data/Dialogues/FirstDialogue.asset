@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-6451062806959196923
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef41b43ae994d444f9f1dc7237cf2c15, type: 3}
+  m_Name: b3802218-28a8-46cb-81eb-20ab4865779d
+  m_EditorClassIdentifier: 
+  _isPlayerSpeaking: 0
+  _text: "\u4F60\u62FF\u5230\u6B66\u5668\u4E86\uFF1F\u90A3\u5C31\u62DC\u6258\u4F60\u4E86\uFF01"
+  _children: []
+  _rect:
+    serializedVersion: 2
+    x: 656
+    y: 71
+    width: 200
+    height: 100
+  _onEnterAction: 
+  _onExitAction: 
+  _condition:
+    _and:
+    - _or:
+      - _predicate: HasItem
+        _parameters:
+        - "\u5DE5\u5320\u9524\u5B50"
+        _negate: 0
 --- !u!114 &-6428848948966083412
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17,12 +47,14 @@ MonoBehaviour:
   _children: []
   _rect:
     serializedVersion: 2
-    x: 884
-    y: 155
+    x: 905
+    y: 198
     width: 200
     height: 100
   _onEnterAction: 
   _onExitAction: 
+  _condition:
+    _and: []
 --- !u!114 &-3360096506640570922
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -46,6 +78,8 @@ MonoBehaviour:
     height: 100
   _onEnterAction: 
   _onExitAction: 
+  _condition:
+    _and: []
 --- !u!114 &-2031525783650130314
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -64,12 +98,14 @@ MonoBehaviour:
   - e75c14ef-7f33-4bab-9c1f-9c0a8dcef064
   _rect:
     serializedVersion: 2
-    x: 571
-    y: 327
+    x: 580
+    y: 328
     width: 200
     height: 100
   _onEnterAction: 
   _onExitAction: 
+  _condition:
+    _and: []
 --- !u!114 &-1852372788768939139
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -86,14 +122,18 @@ MonoBehaviour:
   _text: "\u8FD9\u6761\u8DEF\u600E\u4E48\u8FD9\u4E48\u4E0D\u5BF9\u52B2\u5462...\u524D\u9762\u6709\u4E2A\u54E5\u5E03\u6797\u8425\u5730\uFF01"
   _children:
   - 9ec14927-40c9-4a22-b1e0-9058bdac67fa
+  - 38391c18-f08b-4105-b17e-2f4efcf9bf42
+  - 159190d1-0ce7-437f-959b-83c2790ac2e7
   _rect:
     serializedVersion: 2
-    x: 72
-    y: 212
+    x: 60
+    y: 161
     width: 200
     height: 100
   _onEnterAction: 
   _onExitAction: 
+  _condition:
+    _and: []
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -113,6 +153,39 @@ MonoBehaviour:
   - {fileID: -2031525783650130314}
   - {fileID: -6428848948966083412}
   - {fileID: -3360096506640570922}
+  - {fileID: 8809254259932661006}
+  - {fileID: 68333881392613369}
+  - {fileID: -6451062806959196923}
+--- !u!114 &68333881392613369
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef41b43ae994d444f9f1dc7237cf2c15, type: 3}
+  m_Name: 159190d1-0ce7-437f-959b-83c2790ac2e7
+  m_EditorClassIdentifier: 
+  _isPlayerSpeaking: 0
+  _text: "\u5DF2\u7ECF\u89E3\u51B3\u4E86\uFF1F\u8C22\u8C22\uFF01"
+  _children: []
+  _rect:
+    serializedVersion: 2
+    x: 347
+    y: 177
+    width: 200
+    height: 100
+  _onEnterAction: 
+  _onExitAction: 
+  _condition:
+    _and:
+    - _or:
+      - _predicate: HasCompletedQuest
+        _parameters:
+        - "\u8DEF\u51B5\u4E0D\u4F73"
+        _negate: 0
 --- !u!114 &1284153099459324914
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -131,12 +204,14 @@ MonoBehaviour:
   - 292fa258-9af3-4a3a-a1c0-9dac88ce6f22
   _rect:
     serializedVersion: 2
-    x: 581
-    y: 155
+    x: 609
+    y: 217
     width: 200
     height: 100
   _onEnterAction: 
   _onExitAction: GiveQuest
+  _condition:
+    _and: []
 --- !u!114 &5407049752912109264
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -156,9 +231,52 @@ MonoBehaviour:
   - 132cbb71-b721-4e91-bff4-a0e45a5e3827
   _rect:
     serializedVersion: 2
-    x: 331
-    y: 287
+    x: 320
+    y: 330
     width: 200
     height: 100
   _onEnterAction: 
   _onExitAction: 
+  _condition:
+    _and:
+    - _or:
+      - _predicate: HasQuest
+        _parameters:
+        - "\u8DEF\u51B5\u4E0D\u4F73"
+        _negate: 1
+--- !u!114 &8809254259932661006
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef41b43ae994d444f9f1dc7237cf2c15, type: 3}
+  m_Name: 38391c18-f08b-4105-b17e-2f4efcf9bf42
+  m_EditorClassIdentifier: 
+  _isPlayerSpeaking: 0
+  _text: "\u89E3\u51B3\u4E86\u5417\uFF1F"
+  _children:
+  - b3802218-28a8-46cb-81eb-20ab4865779d
+  _rect:
+    serializedVersion: 2
+    x: 360
+    y: 65
+    width: 200
+    height: 100
+  _onEnterAction: 
+  _onExitAction: 
+  _condition:
+    _and:
+    - _or:
+      - _predicate: HasQuest
+        _parameters:
+        - "\u8DEF\u51B5\u4E0D\u4F73"
+        _negate: 0
+    - _or:
+      - _predicate: HasCompletedQuest
+        _parameters:
+        - "\u8DEF\u51B5\u4E0D\u4F73"
+        _negate: 1

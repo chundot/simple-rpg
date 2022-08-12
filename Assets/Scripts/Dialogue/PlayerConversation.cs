@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using RPG.Core;
 using UnityEngine;
 
 namespace RPG.Dialogue
@@ -26,7 +27,7 @@ namespace RPG.Dialogue
       }
     }
     public string Text => _curDialogue == null ? "" : CurNode.Text;
-    public bool HasNext => _curDialogue.GetAllChildren(CurNode).Count() > 0;
+    public bool HasNext => FilteredNodes(_curDialogue.GetAllChildren(CurNode)).Count() > 0;
     public bool IsChoosing { get; set; }
     public string CurConversationName
     {
@@ -55,16 +56,19 @@ namespace RPG.Dialogue
         return;
       }
       if (HasNext)
-        CurNode = _curDialogue.GetAIChildren(CurNode).ToArray()[0];
+        CurNode = FilteredNodes(_curDialogue.GetAIChildren(CurNode)).First();
     }
     public IEnumerable<DialogueNode> Choices
     {
       get
       {
-        foreach (var child in _curDialogue.GetPlayerChildren(CurNode))
+        foreach (var child in FilteredNodes(_curDialogue.GetPlayerChildren(CurNode)))
           yield return child;
       }
     }
+
+    public IEnumerable<IPredicateEvaluator> Evaluators => GetComponents<IPredicateEvaluator>();
+
     public void SelectChoice(DialogueNode chosenNode)
     {
       UpdateChoosing(chosenNode);
@@ -77,7 +81,15 @@ namespace RPG.Dialogue
       CurNode = null;
       _curConversation = null;
     }
-    public void UpdateChoosing(DialogueNode node = null) => IsChoosing = _curDialogue.GetPlayerChildren(node ? node : CurNode).Count() > 1;
+
+    IEnumerable<DialogueNode> FilteredNodes(IEnumerable<DialogueNode> nodes)
+    {
+      foreach (var node in nodes)
+        if (node.CheckCondition(Evaluators))
+          yield return node;
+    }
+
+    public void UpdateChoosing(DialogueNode node = null) => IsChoosing = FilteredNodes(_curDialogue.GetPlayerChildren(node ? node : CurNode)).Count() > 1;
     void TriggerEnterAction()
     {
       TriggerAction(CurNode.OnEnterAction);

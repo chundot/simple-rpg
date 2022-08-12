@@ -746,6 +746,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _title: {fileID: 615416401749478551}
+  _rewards: {fileID: 8989260437192273034}
   _objectives: {fileID: 5269885071421857328}
   _objectivePrefab: {fileID: 3488647258935175008, guid: f15fa41fcad1a0b40bb2330cee489142,
     type: 3}

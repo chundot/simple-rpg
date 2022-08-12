@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using RPG.Saving;
 using UnityEngine;
 
 namespace RPG.Quests
@@ -9,7 +8,7 @@ namespace RPG.Quests
   public class QuestStatus
   {
     [SerializeField] Quest _quest;
-    [SerializeField] List<string> _completedObjectives = new();
+    [SerializeField] List<string> _completedObjectiveRefers = new();
 
     public QuestStatus(Quest quest)
     {
@@ -20,26 +19,38 @@ namespace RPG.Quests
     {
       if (obj is not QuestStatusRecord record) return;
       _quest = Quest.GetByName(record.QuestName);
-      _completedObjectives = record.CompletedObjectives;
+      _completedObjectiveRefers = record.CompletedObjectives;
     }
 
     public Quest Quest => _quest;
-    public int CompletedCount => _completedObjectives.Count;
-    public bool IsCompleted(string objective) => _completedObjectives.Contains(objective);
+    public int CompletedCount => _completedObjectiveRefers.Count;
 
-    public void CompleteObjective(string objective)
+    public bool IsCompleted
     {
-      if (HasObjective(objective)) return;
-      _completedObjectives.Add(objective);
+      get
+      {
+        foreach (var obj in _quest.Objectives)
+          if (!_completedObjectiveRefers.Contains(obj.Reference))
+            return false;
+        return true;
+      }
     }
-    public bool HasObjective(string objective) => _completedObjectives.Contains(objective);
+
+    public bool IsObjectiveCompleted(string objectiveRefer) => _completedObjectiveRefers.Contains(objectiveRefer);
+
+    public void CompleteObjective(string objectiveRefer)
+    {
+      if (HasObjective(objectiveRefer) && !_quest.HasObjective(objectiveRefer)) return;
+      _completedObjectiveRefers.Add(objectiveRefer);
+    }
+    public bool HasObjective(string objectiveRefer) => _completedObjectiveRefers.Contains(objectiveRefer);
 
     public object CaptureState()
     {
       return new QuestStatusRecord()
       {
         QuestName = _quest.Title,
-        CompletedObjectives = _completedObjectives
+        CompletedObjectives = _completedObjectiveRefers
       };
     }
     [Serializable]

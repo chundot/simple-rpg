@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _itemID: a59db262-b504-42fc-a68c-b6c173091677
   _displayName: Hat
-  _description: A simple hat
+  _description: "\u7B80\u5355\u7684\u5E3D\u5B50\uFF0C\u53EF\u4EE5\u5C0F\u5E45\u589E\u52A0"
   _icon: {fileID: 21300000, guid: 7c4272045db356d4191801bf4343dbe3, type: 3}
   _pickup: {fileID: 649073638097687742, guid: 3475d73912c22fb4398e073cf105896f, type: 3}
   _stackable: 0

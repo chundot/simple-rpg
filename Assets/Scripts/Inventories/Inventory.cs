@@ -1,10 +1,11 @@
 ﻿using System;
 using UnityEngine;
 using RPG.Saving;
+using RPG.Core;
 
 namespace RPG.Inventories
 {
-  public class Inventory : MonoBehaviour, ISaveable
+  public class Inventory : MonoBehaviour, ISaveable, IPredicateEvaluator
   {
     [Tooltip("背包大小")]
     [SerializeField] int _inventorySize = 16;
@@ -47,6 +48,14 @@ namespace RPG.Inventories
         if (ReferenceEquals(_slots[i].Item, item))
           return true;
       }
+      return false;
+    }
+
+    public bool HasItem(string itemName)
+    {
+      foreach (var slot in _slots)
+        if (slot.Item && slot.Item.DisplayName == itemName)
+          return true;
       return false;
     }
 
@@ -150,6 +159,13 @@ namespace RPG.Inventories
         _slots[i].Number = slotStrings[i].Number;
       }
       InventoryUpdated?.Invoke();
+    }
+
+    public bool? Evaluate(string predicate, string[] parameters)
+    {
+      if (predicate == "HasItem")
+        return HasItem(parameters[0]);
+      return null;
     }
   }
 }

@@ -14,6 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _title: "\u8DEF\u51B5\u4E0D\u4F73"
   _objectives:
-  - "\u51FB\u8D25\u6C34\u4E95\u65C1\u7684\u54E5\u5E03\u6797"
-  - "\u51FB\u8D25\u5E10\u7BF7\u8FB9\u4E0A\u7684\u54E5\u5E03\u6797"
-  - "\u548C\u50E7\u4FA3\u4EA4\u8C08"
+  - Reference: 1
+    Description: "\u51FB\u8D25\u6C34\u4E95\u65C1\u7684\u54E5\u5E03\u6797"
+  - Reference: 2
+    Description: "\u51FB\u8D25\u5E10\u7BF7\u8FB9\u4E0A\u7684\u54E5\u5E03\u6797"
+  _rewards:
+  - Item: {fileID: 11400000, guid: bb894c99246a634488951acc3c346229, type: 2}
+    Num: 1
+  - Item: {fileID: 11400000, guid: 041902c91e11e7c4fa3f12daa6c55f1f, type: 2}
+    Num: 3

@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 using RPG.Saving;
+using System.Linq;
 
 namespace RPG.Inventories
 {
   public class Equipment : MonoBehaviour, ISaveable
   {
-    Dictionary<EquipLocation, EquipableItem> _equippedItems = new();
+    readonly Dictionary<EquipLocation, EquipableItem> _equippedItems = new();
     public event Action EquipmentUpdated;
     public IEnumerable<EquipLocation> AllPopulatedSlots => _equippedItems.Keys;
     public EquipableItem GetItemInSlot(EquipLocation equipLocation)
@@ -30,18 +31,13 @@ namespace RPG.Inventories
 
     object ISaveable.CaptureState()
     {
-      Dictionary<EquipLocation, string> equippedItemsForSerialization = new();
-      foreach (var pair in _equippedItems)
-        equippedItemsForSerialization[pair.Key] = pair.Value.ItemID;
-      return equippedItemsForSerialization;
+      return _equippedItems.ToDictionary(p => p.Key, p => p.Value.ItemID);
     }
 
     void ISaveable.RestoreState(object state)
     {
-      _equippedItems = new Dictionary<EquipLocation, EquipableItem>();
-
+      //_equippedItems = new Dictionary<EquipLocation, EquipableItem>();
       var equippedItemsForSerialization = state as Dictionary<EquipLocation, string>;
-
       foreach (var pair in equippedItemsForSerialization)
       {
         var item = InventoryItem.GetFromID(pair.Value) as EquipableItem;

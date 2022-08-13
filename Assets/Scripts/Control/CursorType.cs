@@ -8,6 +8,7 @@ namespace RPG.Control
     UI,
     Loot,
     Full,
-    Dialogue
+    Dialogue,
+    Shop
   }
 }

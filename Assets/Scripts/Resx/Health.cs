@@ -15,9 +15,10 @@ namespace RPG.Resx
     Animator _animator;
     BaseStats _stats;
     LazyValue<float> _curHealth;
+    float CurHealth { get => _curHealth.Value; set => _curHealth.Value = value; }
     public float Percentage { get => Fraction * 100; }
-    public float Fraction { get => _curHealth.Value / _stats.MaxHealth; }
-    public bool IsDead { get => _curHealth.Value == 0; }
+    public float Fraction { get => CurHealth / _stats.MaxHealth; }
+    public bool IsDead { get => CurHealth == 0; }
     void Awake()
     {
       _animator = GetComponent<Animator>();
@@ -29,7 +30,7 @@ namespace RPG.Resx
 
     public void Heal(float healthRegen)
     {
-      _curHealth.Value = Mathf.Min(_stats.MaxHealth, _curHealth.Value + healthRegen);
+      CurHealth = Mathf.Min(_stats.MaxHealth, CurHealth + healthRegen);
       _onHealthPercentageChanged.Invoke(Percentage);
     }
 
@@ -41,12 +42,12 @@ namespace RPG.Resx
     {
       _stats.OnLevelUp -= HealthRegenOnLevelUp;
     }
-    void HealthRegenOnLevelUp() => _curHealth.Value = Mathf.Min(_stats.MaxHealth, (_stats.MaxHealth - _curHealth.Value) * .3f + _curHealth.Value);
+    void HealthRegenOnLevelUp() => CurHealth = Mathf.Min(_stats.MaxHealth, (_stats.MaxHealth - CurHealth) * .3f + CurHealth);
     public void TakeDamage(GameObject from, float dmg)
     {
       if (IsDead)
         return;
-      _curHealth.Value = Mathf.Max(0, _curHealth.Value - dmg);
+      CurHealth = Mathf.Max(0, CurHealth - dmg);
       _onHealthPercentageChanged.Invoke(Percentage);
       if (IsDead)
       {
@@ -76,13 +77,13 @@ namespace RPG.Resx
 
     public object CaptureState()
     {
-      return _curHealth.Value;
+      return CurHealth;
     }
 
     public void RestoreState(object state)
     {
-      _curHealth.Value = (float)state;
-      if (_curHealth.Value == 0) Die();
+      CurHealth = (float)state;
+      if (CurHealth == 0) Die();
     }
   }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using RPG.Saving;
 using UnityEngine;
 
@@ -7,7 +8,7 @@ namespace RPG.Inventories
 {
   public class ActionStore : MonoBehaviour, ISaveable
   {
-    Dictionary<int, DockedItemSlot> _dockedItems = new();
+    readonly Dictionary<int, DockedItemSlot> _dockedItems = new();
     class DockedItemSlot
     {
       public ActionItem Item;
@@ -94,17 +95,7 @@ namespace RPG.Inventories
 
     object ISaveable.CaptureState()
     {
-      Dictionary<int, DockedItemRecord> state = new();
-      foreach (var pair in _dockedItems)
-      {
-        DockedItemRecord record = new()
-        {
-          ItemID = pair.Value.Item.ItemID,
-          Number = pair.Value.Number
-        };
-        state[pair.Key] = record;
-      }
-      return state;
+      return _dockedItems.ToDictionary(p => p.Key, p => new DockedItemRecord { ItemID = p.Value.Item.ItemID, Number = p.Value.Number });
     }
 
     void ISaveable.RestoreState(object state)

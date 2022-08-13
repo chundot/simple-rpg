@@ -4902,6 +4902,9 @@ MonoBehaviour:
   - Type: 6
     Texture: {fileID: 2800000, guid: 96d4bfdb0d6d8c042bf8fccf6524d239, type: 3}
     Hotspot: {x: 0, y: 0}
+  - Type: 7
+    Texture: {fileID: 2800000, guid: 96d4bfdb0d6d8c042bf8fccf6524d239, type: 3}
+    Hotspot: {x: 0, y: 0}
   _maxNavProjectionDistance: 1
   _raycastRadius: 1
 --- !u!114 &6558554475975587598
@@ -4916,7 +4919,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ac43b8631eaf5040bc8e566d69d526c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _statuses: []
 --- !u!114 &7085301228338562830
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4927,5 +4929,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c594ebc84b16b514ab0b3912af45db4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8492247255577119005
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5857258164711127475}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9fed511f9c6c3449b97c0872f7d316d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

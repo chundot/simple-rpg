@@ -17,6 +17,10 @@ namespace RPG.Inventories
     [SerializeField] Pickup _pickup = null;
     [Tooltip("是否可堆叠.")]
     [SerializeField] bool _stackable = false;
+    [Tooltip("道具基础价格.")]
+    [SerializeField] float _price;
+    [Tooltip("道具分类.")]
+    [SerializeField] ItemCategory _category;
 
     static Dictionary<string, InventoryItem> _itemLookupCache;
     public Sprite Icon => _icon;
@@ -27,6 +31,8 @@ namespace RPG.Inventories
     public string DisplayName => _displayName;
 
     public string Description => _description;
+    public float Price => _price;
+    public ItemCategory Category => _category;
     public static InventoryItem GetFromID(string itemID)
     {
       if (_itemLookupCache == null)

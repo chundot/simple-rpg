@@ -2,6 +2,9 @@
 using UnityEngine;
 using RPG.Saving;
 using RPG.Core;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace RPG.Inventories
 {
@@ -21,12 +24,30 @@ namespace RPG.Inventories
     public event Action InventoryUpdated;
 
     public int Size => _slots.Length;
+    public int FreeSlots => _slots.Count(s => s.Number == 0);
 
     public static Inventory PlayerInventory => GameObject.FindWithTag("Player").GetComponent<Inventory>();
 
     public bool HasSpaceFor(InventoryItem item)
     {
       return FindSlot(item) >= 0;
+    }
+
+    public bool HasSpaceFor(IEnumerable<InventoryItem> items)
+    {
+      int freeSlots = FreeSlots;
+      HashSet<InventoryItem> hs = new();
+      foreach (var item in items)
+      {
+        if (item.IsStackable)
+        {
+          if (HasItem(item) || hs.Contains(item)) continue;
+          hs.Add(item);
+        }
+        if (freeSlots <= 0) return false;
+        --freeSlots;
+      }
+      return true;
     }
 
     public bool AddToFirstEmptySlot(InventoryItem item, int number)
@@ -159,6 +180,14 @@ namespace RPG.Inventories
         _slots[i].Number = slotStrings[i].Number;
       }
       InventoryUpdated?.Invoke();
+    }
+
+    public int FindFirstItemSlot(InventoryItem item)
+    {
+      for (int i = 0; i < Size; i++)
+        if (_slots[i].Item == item)
+          return i;
+      return -1;
     }
 
     public bool? Evaluate(string predicate, string[] parameters)

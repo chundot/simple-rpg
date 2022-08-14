@@ -18,6 +18,8 @@ MonoBehaviour:
   _icon: {fileID: 21300000, guid: b81ba68e50e78424a98853aed32330ee, type: 3}
   _pickup: {fileID: 0}
   _stackable: 0
+  _price: 0
+  _category: 2
   _allowedEquipLocation: 5
   _weaponAnimator: {fileID: 22100000, guid: e05ff2219af1ee34f959a467fe5a84cf, type: 2}
   _weaponPrefab: {fileID: 5364979834015409081, guid: 84c19fb6228055441b9b32cfa2b1ca93,

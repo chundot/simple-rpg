@@ -12,19 +12,11 @@ namespace RPG.Shops
       get => _activeShop;
       set
       {
+        if (_activeShop) _activeShop.CurShopper = null;
         _activeShop = value;
+        if (_activeShop) _activeShop.CurShopper = this;
         OnActiveShopChange?.Invoke();
       }
-    }
-
-    void Start()
-    {
-
-    }
-
-    void Update()
-    {
-
     }
   }
 

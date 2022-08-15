@@ -66,7 +66,7 @@ Material:
     - _HorizonStep: 500
     - _HorizonThickness: 1
     - _MoonGlow: 0
-    - _MoonLightIntensity: 0
+    - _MoonLightIntensity: 0.14464293
     - _MoonSize: 0
     - _MoonSoftEdge: 0
     - _OverheadCloudAltitude: 1000
@@ -80,7 +80,7 @@ Material:
     - _StarsDensity0: 0
     - _StarsDensity1: 0
     - _StarsDensity2: 0
-    - _StarsEndPosition: 0
+    - _StarsEndPosition: 0.02616842
     - _StarsGlow0: 0.01
     - _StarsGlow1: 0.01
     - _StarsGlow2: 0.01
@@ -88,8 +88,8 @@ Material:
     - _StarsSize0: 0.01
     - _StarsSize1: 0.01
     - _StarsSize2: 0.01
-    - _StarsStartPosition: -0.01
-    - _StarsTwinkle0: 0
+    - _StarsStartPosition: 0
+    - _StarsTwinkle0: 5
     - _StarsTwinkle1: 0
     - _StarsTwinkle2: 0
     - _SunGlow: 0.45
@@ -106,7 +106,7 @@ Material:
     - _MoonDirection: {r: 0, g: 0, b: 1, a: 0}
     - _MoonLightColor: {r: 0, g: 0, b: 0, a: 0}
     - _OverheadCloudColor: {r: 1, g: 1, b: 1, a: 0.5647059}
-    - _SkyColor: {r: 0.2264151, g: 0.6028122, b: 0.9056604, a: 1}
+    - _SkyColor: {r: 0.1720852, g: 0.26827887, b: 0.48929548, a: 1}
     - _StarsColor0: {r: 0, g: 0, b: 0, a: 0}
     - _StarsColor1: {r: 0, g: 0, b: 0, a: 0}
     - _StarsColor2: {r: 0, g: 0, b: 0, a: 0}

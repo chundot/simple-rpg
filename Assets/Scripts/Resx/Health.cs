@@ -9,13 +9,14 @@ namespace RPG.Resx
 {
   public class Health : MonoBehaviour, ISaveable
   {
+    public UnityEvent OnDie;
     [SerializeField] UnityEvent<float> _takeDmg, _setFill, _onHealthPercentageChanged;
     [SerializeField] UnityEvent<bool> _changeBar;
-    [SerializeField] UnityEvent _onDie;
     Animator _animator;
     BaseStats _stats;
     LazyValue<float> _curHealth;
     float CurHealth { get => _curHealth.Value; set => _curHealth.Value = value; }
+    bool _isDeadLastFrame;
     public float Percentage { get => Fraction * 100; }
     public float Fraction { get => CurHealth / _stats.MaxHealth; }
     public bool IsDead { get => CurHealth == 0; }
@@ -25,13 +26,13 @@ namespace RPG.Resx
       _stats = GetComponent<BaseStats>();
       _curHealth = new(() => _stats.MaxHealth);
     }
-
     public void HealByPercentage(float percentage) => Heal(percentage / 100 * _stats.MaxHealth);
 
     public void Heal(float healthRegen)
     {
       CurHealth = Mathf.Min(_stats.MaxHealth, CurHealth + healthRegen);
       _onHealthPercentageChanged.Invoke(Percentage);
+      UpdateState();
     }
 
     void OnEnable()
@@ -51,7 +52,7 @@ namespace RPG.Resx
       _onHealthPercentageChanged.Invoke(Percentage);
       if (IsDead)
       {
-        Die();
+        OnDie.Invoke();
         AwardXP(from);
       }
       else
@@ -59,6 +60,7 @@ namespace RPG.Resx
         _setFill.Invoke(Fraction);
         _takeDmg.Invoke(dmg);
       }
+      UpdateState();
     }
 
     void AwardXP(GameObject from)
@@ -67,12 +69,17 @@ namespace RPG.Resx
       xp.GainXP(_stats.XPReward);
     }
 
-    void Die()
+    void UpdateState()
     {
-      _onDie.Invoke();
-      _changeBar.Invoke(false);
-      _animator.SetTrigger("Die");
-      GetComponent<ActionScheduler>().CancelCurAction();
+      if (!_isDeadLastFrame && IsDead)
+      {
+        _changeBar.Invoke(false);
+        _animator.SetTrigger("Die");
+        GetComponent<ActionScheduler>().CancelCurAction();
+      }
+      if (_isDeadLastFrame && !IsDead)
+        _animator.Rebind();
+      _isDeadLastFrame = IsDead;
     }
 
     public object CaptureState()
@@ -83,7 +90,7 @@ namespace RPG.Resx
     public void RestoreState(object state)
     {
       CurHealth = (float)state;
-      if (CurHealth == 0) Die();
+      UpdateState();
     }
   }
 }

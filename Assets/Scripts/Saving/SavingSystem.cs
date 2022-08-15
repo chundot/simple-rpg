@@ -81,6 +81,15 @@ namespace RPG.Saving
       }
     }
 
+    public IEnumerable<string> ListSaves()
+    {
+      foreach (var path in Directory.EnumerateFiles(Application.persistentDataPath))
+      {
+        if (Path.GetExtension(path) == ".sav")
+          yield return Path.GetFileNameWithoutExtension(path);
+      }
+    }
+
     private string GetPathFromSaveFile(string saveFile)
     {
       return Path.Combine(Application.persistentDataPath, saveFile + ".sav");

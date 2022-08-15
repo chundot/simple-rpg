@@ -36,9 +36,9 @@ namespace RPG.Scene
     }
     IEnumerator FadeRoutine(float target, float time)
     {
-      while (!Mathf.Approximately(_cg.alpha, target))
+      while (!Mathf.Approximately(CG.alpha, target))
       {
-        CG.alpha = Mathf.MoveTowards(_cg.alpha, target, Time.deltaTime / time);
+        CG.alpha = Mathf.MoveTowards(CG.alpha, target, Time.unscaledDeltaTime / time);
         yield return null;
       }
     }

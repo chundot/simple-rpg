@@ -71,7 +71,10 @@ namespace RPG.Movement
       var spd = localVelocity.z;
       _animator.SetFloat("ZMove", spd);
     }
-
+    public void Warp(Vector3 pos)
+    {
+      _agent.Warp(pos);
+    }
     public object CaptureState()
     {
       MoveData moveData = new() { pos = new(transform.position), angles = new(transform.eulerAngles) };

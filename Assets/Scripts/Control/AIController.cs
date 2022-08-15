@@ -128,6 +128,14 @@ namespace RPG.Control
       Gizmos.color = Color.blue;
       Gizmos.DrawWireSphere(transform.position, _chaseDistance);
     }
+    public void Reset()
+    {
+      _mover.Warp(_guardPos.Value);
+      _timeSinceAggrevated = Mathf.Infinity;
+      _timeSinceAtWaypoint = Mathf.Infinity;
+      _timeSinceSawPlayer = Mathf.Infinity;
+      _curWaypointIdx = 0;
+    }
   }
 
 }

@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eee88da92adc05541bc1fc70a0ed23d9, type: 3}
+  m_Name: HealthPotion
+  m_EditorClassIdentifier: 
+  _itemID: fcc441b9-0e2f-4deb-ad6b-c4c8bd06c713
+  _displayName: "\u5C0F\u751F\u547D\u836F\u5242"
+  _description: "\u53EF\u5C0F\u5E45\u6062\u590D\u8840\u91CF"
+  _icon: {fileID: 21300000, guid: 39b161278fc6782370ebe993d303b53d, type: 3}
+  _pickup: {fileID: 325669620283729243, guid: 7df25105f524945499aea1473e4cfde9, type: 3}
+  _stackable: 1
+  _price: 20
+  _category: 3
+  _consumable: 1
+  _actionEffects: []
+  Cooldown: 3
+  _targetingStrategy: {fileID: 11400000, guid: cb98c523d2cb7894e95d3ceeaf521d27, type: 2}
+  _filterStrategies: []
+  _effectStrategies:
+  - {fileID: 11400000, guid: c3223d9da27c06f4ab5957004dbb5e05, type: 2}
+  - {fileID: 11400000, guid: 3119a85414a2df04983254afe403221f, type: 2}
+  _manaCost: 0

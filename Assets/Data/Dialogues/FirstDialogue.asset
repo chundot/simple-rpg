@@ -17,8 +17,8 @@ MonoBehaviour:
   _children: []
   _rect:
     serializedVersion: 2
-    x: 656
-    y: 71
+    x: 614
+    y: 64
     width: 200
     height: 100
   _onEnterAction: 
@@ -43,7 +43,7 @@ MonoBehaviour:
   m_Name: 292fa258-9af3-4a3a-a1c0-9dac88ce6f22
   m_EditorClassIdentifier: 
   _isPlayerSpeaking: 0
-  _text: "\u624B\u65E0\u5BF8\u94C1\u600E\u4E48\u89E3\u51B3\uFF1F\u53BB\u9644\u4EF6\u7684\u5730\u65B9\u770B\u770B\u6709\u6CA1\u6709\u6B66\u5668\u5427\uFF01"
+  _text: "\u624B\u65E0\u5BF8\u94C1\u600E\u4E48\u89E3\u51B3\uFF1F\u53BB\u9644\u8FD1\u7684\u5730\u65B9\u770B\u770B\u6709\u6CA1\u6709\u6B66\u5668\u5427\uFF01"
   _children: []
   _rect:
     serializedVersion: 2

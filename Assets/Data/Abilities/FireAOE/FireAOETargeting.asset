@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2bc0100d205e994489fad886e889b4e, type: 3}
+  m_Name: FireAOETargeting
+  m_EditorClassIdentifier: 
+  _cursorTexture: {fileID: 2800000, guid: 2a2b4775272c890448e1bd6239fdfc84, type: 3}
+  _cursorHotspot: {x: 0, y: 0}
+  _areaFxRadius: 2
+  _layerMask:
+    serializedVersion: 2
+    m_Bits: 128
+  _targetingPrefab: {fileID: 7870329535922801755, guid: 252256c762aefb4418c7d9aa83247904,
+    type: 3}

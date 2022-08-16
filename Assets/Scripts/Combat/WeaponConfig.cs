@@ -1,5 +1,5 @@
+using RPG.Attributes;
 using RPG.Inventories;
-using RPG.Resx;
 using UnityEngine;
 
 namespace RPG.Combat

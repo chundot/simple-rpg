@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eee88da92adc05541bc1fc70a0ed23d9, type: 3}
+  m_Name: FireAOE
+  m_EditorClassIdentifier: 
+  _itemID: 8cd64a7e-f007-4fa8-93e3-4d3bf96a06a8
+  _displayName: "\u706B\u7130\u554A, \u71C3\u70E7\u5427!"
+  _description: "\u5411\u8303\u56F4\u5185\u654C\u4EBA\u53D1\u5C04\u706B\u7403"
+  _icon: {fileID: 21300000, guid: e4aa38e6cbaf731f1c8cafc01b49236c, type: 3}
+  _pickup: {fileID: 5896669286365892628, guid: 5897f1b1c8c9b6b45bf7f6de42fc486f, type: 3}
+  _stackable: 0
+  _price: 350
+  _category: 4
+  _consumable: 0
+  _actionEffects: []
+  Cooldown: 5
+  _targetingStrategy: {fileID: 11400000, guid: e87ea8d0b1718eb429e750ae3785f43f, type: 2}
+  _filterStrategies:
+  - {fileID: 11400000, guid: 5db3b1755f419d1448b8c7182d39c314, type: 2}
+  _effectStrategies:
+  - {fileID: 11400000, guid: e39371816f8fc8644bd5e5ea594849ff, type: 2}
+  - {fileID: 11400000, guid: 8dd5395c23dabdd4fa178e5e123b7c90, type: 2}
+  _manaCost: 20

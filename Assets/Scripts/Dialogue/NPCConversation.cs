@@ -1,5 +1,5 @@
+using RPG.Attributes;
 using RPG.Control;
-using RPG.Resx;
 using UnityEngine;
 
 namespace RPG.Dialogue
@@ -18,7 +18,10 @@ namespace RPG.Dialogue
     {
       if (!_dialogue || (_health && _health.IsDead)) return false;
       if (Input.GetMouseButtonDown(0))
+      {
         playerCtrl.GetComponent<PlayerConversation>().StartDialogue(this, _dialogue);
+        transform.LookAt(playerCtrl.transform);
+      }
       return true;
     }
   }

@@ -5,7 +5,7 @@ using RPG.Utils;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace RPG.Resx
+namespace RPG.Attributes
 {
   public class Health : MonoBehaviour, ISaveable
   {
@@ -61,6 +61,10 @@ namespace RPG.Resx
         _takeDmg.Invoke(dmg);
       }
       UpdateState();
+    }
+    public void TakeDmgByPercentage(GameObject from, float percentage)
+    {
+      TakeDamage(from, percentage / 100 * _stats.MaxHealth);
     }
 
     void AwardXP(GameObject from)

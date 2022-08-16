@@ -1,43 +1,54 @@
-﻿using RPG.Core.UI.Dragging;
+﻿
+using RPG.Abilities;
+using RPG.Core.UI.Dragging;
 using RPG.Inventories;
+using RPG.Manager;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace RPG.UI.Inventories
 {
   public class ActionSlotUI : MonoBehaviour, IItemHolder, IDragContainer<InventoryItem>
   {
-    [SerializeField] InventoryItemIcon icon = null;
-    [SerializeField] int index = 0;
+    [SerializeField] InventoryItemIcon _icon = null;
+    [SerializeField] int _index = 0;
+    [SerializeField] Image _cooldownOverlay;
+    ActionStore _store;
+    CooldownStore _cdStore;
+    public InventoryItem Item => _store.GetAction(_index);
 
-    ActionStore store;
-    public InventoryItem Item => store.GetAction(index);
-
-    public int Number => store.GetNumber(index);
+    public int Number => _store.GetNumber(_index);
 
     void Awake()
     {
-      store = GameObject.FindGameObjectWithTag("Player").GetComponent<ActionStore>();
-      store.StoreUpdated += UpdateIcon;
+      _store = SceneMgr.Self.Player.GetComponent<ActionStore>();
+      _cdStore = SceneMgr.Self.Player.GetComponent<CooldownStore>();
+      _store.StoreUpdated += UpdateIcon;
+    }
+
+    void Update()
+    {
+      if (Item) _cooldownOverlay.fillAmount = _cdStore.GetFractionRemaining(Item);
     }
 
     public void AddItems(InventoryItem item, int number)
     {
-      store.AddAction(item, index, number);
+      _store.AddAction(item, _index, number);
     }
 
     public int MaxAcceptable(InventoryItem item)
     {
-      return store.MaxAcceptable(item, index);
+      return _store.MaxAcceptable(item, _index);
     }
 
     public void RemoveItems(int number)
     {
-      store.RemoveItems(index, number);
+      _store.RemoveItems(_index, number);
     }
 
     void UpdateIcon()
     {
-      icon.SetItem(Item, Number);
+      _icon.SetItem(Item, Number);
     }
   }
 }

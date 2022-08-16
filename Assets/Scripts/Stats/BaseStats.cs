@@ -22,6 +22,8 @@ namespace RPG.Stats
     public event Action OnLevelUp;
     public float MaxHealth { get => GetStat(StatsEnum.Health); }
     public float XPReward { get => GetStat(StatsEnum.XPReward); }
+    public float MaxMana { get => GetStat(StatsEnum.MaxMana); }
+    public float ManaRegen { get => GetStat(StatsEnum.ManaRegen); }
     public int Level { get => _curLevel.Value; }
     public int CalculatedLevel
     {

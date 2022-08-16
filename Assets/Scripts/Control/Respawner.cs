@@ -1,6 +1,5 @@
-using System;
 using System.Collections;
-using RPG.Resx;
+using RPG.Attributes;
 using RPG.Scene;
 using RPG.Utils;
 using UnityEngine;

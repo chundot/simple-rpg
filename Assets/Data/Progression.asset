@@ -18,6 +18,11 @@ MonoBehaviour:
     - Stat: 0
       Levels:
       - 100
+    - Stat: 4
+      Levels:
+      - 100
+      - 150
+      - 200
   - CharClass: 1
     Stats:
     - Stat: 0
@@ -34,6 +39,11 @@ MonoBehaviour:
       - 0
       - 5
       - 8
+    - Stat: 4
+      Levels:
+      - 100
+      - 150
+      - 200
   - CharClass: 5
     Stats:
     - Stat: 0
@@ -47,3 +57,8 @@ MonoBehaviour:
       - 6
       - 9
       - 15
+    - Stat: 4
+      Levels:
+      - 100
+      - 150
+      - 200

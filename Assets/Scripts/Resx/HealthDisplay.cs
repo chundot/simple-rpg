@@ -1,3 +1,4 @@
+using RPG.Attributes;
 using RPG.Manager;
 using UnityEngine;
 using UnityEngine.UI;
@@ -10,7 +11,7 @@ namespace RPG.Resx
     Text _text;
     void Awake()
     {
-      _health = GameObject.FindGameObjectWithTag("Player").GetComponent<Health>();
+      _health = SceneMgr.Self.Player.GetComponent<Health>();
       _text = GetComponent<Text>();
     }
     void Update()

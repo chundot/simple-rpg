@@ -1,10 +1,10 @@
 using System;
 using System.Linq;
+using RPG.Attributes;
 using RPG.Combat;
 using RPG.Inventories;
 using RPG.Manager;
 using RPG.Movement;
-using RPG.Resx;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.EventSystems;
@@ -20,8 +20,8 @@ namespace RPG.Control
     Health _health;
     ActionStore _actionStore;
     bool _isDraggingUI = false;
-    static Ray MouseRay { get => Camera.main.ScreenPointToRay(Input.mousePosition); }
-    public Fighter Fighter { get => _fighter; }
+    public static Ray MouseRay { get => Camera.main.ScreenPointToRay(Input.mousePosition); }
+    public Fighter Fighter { get => _fighter ? _fighter : GetComponent<Fighter>(); }
     public Mover Mover { get => _mover; }
     void Awake()
     {
@@ -34,13 +34,13 @@ namespace RPG.Control
 
     void Update()
     {
-      InteractWithAction();
       if (InteractWithUI()) return;
       if (_health.IsDead)
       {
         SetCursor(CursorType.None);
         return;
       }
+      InteractWithAction();
       if (InteractWithComponent()) return;
       if (InteractWithMovement()) return;
       SetCursor(CursorType.None);
@@ -48,18 +48,9 @@ namespace RPG.Control
 
     void InteractWithAction()
     {
-      if (Input.GetKeyDown(KeyCode.Alpha1))
-        _actionStore.Use(0, gameObject);
-      if (Input.GetKeyDown(KeyCode.Alpha2))
-        _actionStore.Use(1, gameObject);
-      if (Input.GetKeyDown(KeyCode.Alpha3))
-        _actionStore.Use(2, gameObject);
-      if (Input.GetKeyDown(KeyCode.Alpha4))
-        _actionStore.Use(3, gameObject);
-      if (Input.GetKeyDown(KeyCode.Alpha5))
-        _actionStore.Use(4, gameObject);
-      if (Input.GetKeyDown(KeyCode.Alpha6))
-        _actionStore.Use(5, gameObject);
+      for (int i = 0; i < 6; i++)
+        if (Input.GetKeyDown(KeyCode.Alpha1 + i))
+          _actionStore.Use(i, gameObject);
     }
 
     bool InteractWithComponent()

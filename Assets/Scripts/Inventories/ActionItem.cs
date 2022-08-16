@@ -1,5 +1,5 @@
 using System;
-using RPG.Resx;
+using RPG.Attributes;
 using UnityEngine;
 
 namespace RPG.Inventories
@@ -10,6 +10,7 @@ namespace RPG.Inventories
     [Tooltip("消耗品, 使用时消失.")]
     [SerializeField] bool _consumable = false;
     [SerializeField] ActionEffect[] _actionEffects;
+    [SerializeField] protected float Cooldown;
     public bool IsConsumable => _consumable;
 
     public virtual void Use(GameObject user)

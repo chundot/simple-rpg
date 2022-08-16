@@ -1,5 +1,3 @@
-using UnityEngine;
-
 namespace RPG.Stats
 {
   public enum StatsEnum
@@ -7,6 +5,8 @@ namespace RPG.Stats
     Health,
     XPReward,
     XPToLevelUp,
-    Damage
+    Damage,
+    MaxMana,
+    ManaRegen
   }
 }

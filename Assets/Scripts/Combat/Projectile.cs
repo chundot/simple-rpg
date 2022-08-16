@@ -1,3 +1,4 @@
+using RPG.Attributes;
 using RPG.Resx;
 using UnityEngine;
 using UnityEngine.Events;

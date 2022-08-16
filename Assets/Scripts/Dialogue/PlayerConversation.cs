@@ -73,6 +73,7 @@ namespace RPG.Dialogue
     {
       UpdateChoosing(chosenNode);
       CurNode = chosenNode;
+      Next();
     }
 
     public void Quit()

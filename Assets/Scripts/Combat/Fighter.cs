@@ -1,9 +1,8 @@
-using System;
 using System.Collections.Generic;
+using RPG.Attributes;
 using RPG.Core;
 using RPG.Inventories;
 using RPG.Movement;
-using RPG.Resx;
 using RPG.Saving;
 using RPG.Stats;
 using RPG.Utils;
@@ -27,7 +26,7 @@ namespace RPG.Combat
     float _atkTimer;
     bool InRange
     {
-      get => Vector3.Distance(_target.transform.position, transform.position) < _curWeaponCfg.Range;
+      get => _target ? Vector3.Distance(_target.transform.position, transform.position) < _curWeaponCfg.Range : false;
     }
     public Health Target { get => _target; }
     public float Dmg { get => _stats.Dmg; }

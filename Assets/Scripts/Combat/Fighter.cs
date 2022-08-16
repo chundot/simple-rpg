@@ -55,7 +55,10 @@ namespace RPG.Combat
       _curWeapon.ForceInit();
     }
 
-    // Update is called once per frame
+    public Transform GetHandTransform(bool right)
+    {
+      return right ? _rHandTransform : _lHandTransform;
+    }
     void Update()
     {
       if (_atkTimer > 0) _atkTimer -= Time.deltaTime;

@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace RPG.Abilities.Effects
 {
-  [CreateAssetMenu(fileName = "SpawnTargetPrefabEffect", menuName = "RPG/Abilities/Effects/Spawn Target Prefab Effect", order = 0)]
+  [CreateAssetMenu(fileName = "Spawn Target Prefab Effect", menuName = "RPG/Abilities/Effects/Spawn Target Prefab Effect", order = 0)]
   public class SpawnTargetPrefabEffect : EffectStartegy
   {
     [SerializeField] Transform _prefabToSpawn;

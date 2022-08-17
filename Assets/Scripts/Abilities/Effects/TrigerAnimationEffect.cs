@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace RPG.Abilities.Effects
 {
-  [CreateAssetMenu(fileName = "TrigerAnimationEffect", menuName = "RPG/Abilities/Effects/Triger Animation Effect", order = 0)]
+  [CreateAssetMenu(fileName = "Triger Animation Effect", menuName = "RPG/Abilities/Effects/Triger Animation Effect", order = 0)]
   public class TrigerAnimationEffect : EffectStartegy
   {
     [SerializeField] string _triggerName = "ability1";

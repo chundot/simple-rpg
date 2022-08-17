@@ -13,8 +13,9 @@ namespace RPG.Combat
     [SerializeField] GameObject[] _destoryOnHit;
     [SerializeField] UnityEvent _onHit;
     Health _target;
+    Vector3 _targetPoint;
     float _dmg;
-    Vector3 AimLocation { get => _target.transform.position + Vector3.up; }
+    Vector3 AimLocation { get => _target ? _target.transform.position + Vector3.up : _targetPoint; }
     GameObject _from;
     void Start()
     {
@@ -27,19 +28,33 @@ namespace RPG.Combat
       _target = target;
       _from = from;
     }
+    public void Init(GameObject from, float dmg, Health target = null, Vector3 point = default)
+    {
+      _targetPoint = point;
+      _dmg = dmg;
+      _target = target;
+      _from = from;
+    }
+    public void Init(Vector3 point, GameObject from, float dmg)
+    {
+      _targetPoint = point;
+      _dmg = dmg;
+      _from = from;
+    }
     void Update()
     {
-      if (!_target) return;
-      if (_homing && !_target.IsDead)
+      if (_target && _homing && !_target.IsDead)
         transform.LookAt(AimLocation);
       transform.Translate(Time.deltaTime * _spd * Vector3.forward);
     }
     void OnTriggerEnter(Collider other)
     {
-      if (other.GetComponent<Health>() != _target || _target.IsDead) return;
+      if (other.gameObject == _from) return;
+      if (!other.TryGetComponent(out Health health)) return;
+      if (_target && health != _target || health.IsDead) return;
       _onHit.Invoke();
       _spd = 0;
-      _target.TakeDamage(_from, _dmg);
+      health.TakeDamage(_from, _dmg);
       if (_hitFX != null)
         Instantiate(_hitFX, AimLocation, transform.rotation);
       foreach (var obj in _destoryOnHit)

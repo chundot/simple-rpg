@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace RPG.Abilities.Effects
 {
-  [CreateAssetMenu(fileName = "HealthEffect", menuName = "RPG/Abilities/Effects/Health Effect", order = 0)]
+  [CreateAssetMenu(fileName = "Health Effect", menuName = "RPG/Abilities/Effects/Health Effect", order = 0)]
   public class HealthEffect : EffectStartegy
   {
     [SerializeField] float _healthChange, _healthChangePercentage;

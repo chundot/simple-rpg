@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using RPG.Attributes;
 using RPG.Combat;
 using UnityEngine;
@@ -10,11 +9,27 @@ namespace RPG.Abilities.Effects
   public class SpawnProjectileEffect : EffectStartegy
   {
     [SerializeField] Projectile _projectilePrefab;
-    [SerializeField] float _dmg = 10, _destoryDelay = -1;
-    [SerializeField] bool _rightHand = false;
+    [SerializeField] float _dmg = 10;
+    [SerializeField] bool _rightHand = false, _usePoint = false;
     public override void StartEffect(AbilityData data, Action finished)
     {
       var fighter = data.User.GetComponent<Fighter>();
+      if (_usePoint)
+        SpawnProjectilesUsePoint(data, fighter);
+      else
+        SpawnProjectiles(data, fighter);
+      finished();
+    }
+
+    void SpawnProjectilesUsePoint(AbilityData data, Fighter fighter)
+    {
+      var instance = Instantiate(_projectilePrefab);
+      instance.transform.position = fighter.GetHandTransform(_rightHand).position;
+      instance.Init(data.TargetPoint, data.User, _dmg);
+    }
+
+    void SpawnProjectiles(AbilityData data, Fighter fighter)
+    {
       foreach (var target in data.Targets)
       {
         if (target.TryGetComponent(out Health health))
@@ -24,7 +39,6 @@ namespace RPG.Abilities.Effects
           instance.Init(_dmg, health, data.User);
         }
       }
-      finished();
     }
   }
 

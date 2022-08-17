@@ -19,6 +19,10 @@ namespace RPG.Dialogue
     public Rect Rect { get => _rect; }
     public bool IsPlayerSpeaking { get => _isPlayerSpeaking; }
     public List<string> Children { get => _children; }
+    public bool CheckCondition(IEnumerable<IPredicateEvaluator> evaluators)
+    {
+      return _condition.Check(evaluators);
+    }
 #if UNITY_EDITOR
     public void SetPos(Vector2 pos)
     {
@@ -51,10 +55,6 @@ namespace RPG.Dialogue
       EditorUtility.SetDirty(this);
     }
 
-    public bool CheckCondition(IEnumerable<IPredicateEvaluator> evaluators)
-    {
-      return _condition.Check(evaluators);
-    }
 #endif
   }
 }

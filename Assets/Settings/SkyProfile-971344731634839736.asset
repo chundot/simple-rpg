@@ -145,7 +145,7 @@ Material:
     - _MoonDirection: {r: 0, g: 0, b: 1, a: 0}
     - _MoonLightColor: {r: 0, g: 0, b: 0, a: 0}
     - _OverheadCloudColor: {r: 1, g: 1, b: 1, a: 0.5647059}
-    - _SkyColor: {r: 0.2264151, g: 0.6028122, b: 0.9056604, a: 1}
+    - _SkyColor: {r: 0.31835008, g: 0.64634705, b: 0.9245234, a: 1}
     - _StarsColor0: {r: 0, g: 0, b: 0, a: 0}
     - _StarsColor1: {r: 0, g: 0, b: 0, a: 0}
     - _StarsColor2: {r: 0, g: 0, b: 0, a: 0}

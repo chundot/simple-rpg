@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 078006068fb727a4ab7bfc7cf8b7fa2a, type: 3}
   m_Name: ShotDelayFx
   m_EditorClassIdentifier: 
-  _delay: 0
-  _delayedEffects: []
+  _delay: 0.6
+  _delayedEffects:
+  - {fileID: 11400000, guid: 7a701ff3689af5e4db3bb12aac82d625, type: 2}
   _abortIfCancelled: 0

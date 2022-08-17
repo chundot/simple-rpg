@@ -32,17 +32,17 @@ namespace RPG.Dialogue
         if (!child.IsPlayerSpeaking)
           yield return child;
     }
-#if UNITY_EDITOR
-    public IEnumerable<DialogueNode> Nodes
-    {
-      get => _nodes;
-    }
-    public DialogueNode RootNode => _nodes[0];
     public IEnumerable<DialogueNode> GetAllChildren(DialogueNode parent)
     {
       foreach (var childID in parent.Children)
         if (_nodeDic.TryGetValue(childID, out var val))
           yield return val;
+    }
+    public DialogueNode RootNode => _nodes[0];
+#if UNITY_EDITOR
+    public IEnumerable<DialogueNode> Nodes
+    {
+      get => _nodes;
     }
     public void CreateNode(DialogueNode node = null, bool record = true)
     {

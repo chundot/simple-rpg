@@ -15,5 +15,5 @@ MonoBehaviour:
   _projectilePrefab: {fileID: 4331012442421576027, guid: d5af68ede6ccc5b4ca21abd0d1415dec,
     type: 3}
   _dmg: 10
-  _destoryDelay: -1
   _rightHand: 1
+  _usePoint: 1

@@ -12,19 +12,19 @@ namespace RPG.Abilities
     [SerializeField] FilterStrategy[] _filterStrategies;
     [SerializeField] EffectStartegy[] _effectStrategies;
     [SerializeField] float _manaCost;
-    public override void Use(GameObject user)
+    public override bool Use(GameObject user)
     {
-
       if (_manaCost > user.GetComponent<Mana>().CurMana)
-        return;
+        return false;
       if (user.GetComponent<CooldownStore>().GetTimeRemaining(this) > 0)
-        return;
+        return false;
       AbilityData data = new(user);
       user.GetComponent<ActionScheduler>().StartAction(data);
       _targetingStrategy.StartTargeting(data, () =>
       {
         TargetAcquired(data);
       });
+      return true;
     }
 
     void TargetAcquired(AbilityData data)

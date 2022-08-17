@@ -21,11 +21,10 @@ MonoBehaviour:
   _price: 80
   _category: 4
   _consumable: 0
-  _actionEffects: []
   Cooldown: 2.5
   _targetingStrategy: {fileID: 11400000, guid: 646af54a682801c4786c4de455eef049, type: 2}
   _filterStrategies: []
   _effectStrategies:
-  - {fileID: 11400000, guid: 52c423461147df34c81ae16180e1401c, type: 2}
+  - {fileID: 11400000, guid: d3aba391b6238f44a8b558f781608443, type: 2}
   - {fileID: 11400000, guid: 8dd5395c23dabdd4fa178e5e123b7c90, type: 2}
   _manaCost: 5

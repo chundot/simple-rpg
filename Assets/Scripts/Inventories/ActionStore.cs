@@ -49,8 +49,7 @@ namespace RPG.Inventories
     public bool Use(int index, GameObject user)
     {
       if (!_dockedItems.ContainsKey(index)) return false;
-      _dockedItems[index].Item.Use(user);
-      if (_dockedItems[index].Item.IsConsumable)
+      if (_dockedItems[index].Item.Use(user) && _dockedItems[index].Item.IsConsumable)
         RemoveItems(index, 1);
       return true;
 

@@ -1,5 +1,4 @@
 using System;
-using RPG.Attributes;
 using UnityEngine;
 
 namespace RPG.Inventories
@@ -9,28 +8,12 @@ namespace RPG.Inventories
   {
     [Tooltip("消耗品, 使用时消失.")]
     [SerializeField] bool _consumable = false;
-    [SerializeField] ActionEffect[] _actionEffects;
     [SerializeField] protected float Cooldown;
     public bool IsConsumable => _consumable;
 
-    public virtual void Use(GameObject user)
+    public virtual bool Use(GameObject user)
     {
-      foreach (var fx in _actionEffects)
-      {
-        if (fx.Effect is InventoryEffect.HealthRegen)
-          if (user.TryGetComponent(out Health health))
-            if (fx.Method is EffectMethod.Add)
-              health.Heal(fx.Amount[0]);
-            else if (fx.Method is EffectMethod.Multiply)
-              health.HealByPercentage(fx.Amount[0] * 100);
-      }
-    }
-    [Serializable]
-    struct ActionEffect
-    {
-      public InventoryEffect Effect;
-      public EffectMethod Method;
-      public float[] Amount;
+      return true;
     }
   }
 }

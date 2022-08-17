@@ -18,12 +18,7 @@ namespace RPG.Stats
     {
       get => GetStat(StatsEnum.Damage);
     }
-
     public event Action OnLevelUp;
-    public float MaxHealth { get => GetStat(StatsEnum.Health); }
-    public float XPReward { get => GetStat(StatsEnum.XPReward); }
-    public float MaxMana { get => GetStat(StatsEnum.MaxMana); }
-    public float ManaRegen { get => GetStat(StatsEnum.ManaRegen); }
     public int Level { get => _curLevel.Value; }
     public int CalculatedLevel
     {
@@ -71,7 +66,7 @@ namespace RPG.Stats
       if (_levelUpFX != null)
         Instantiate(_levelUpFX, transform);
     }
-    float GetStat(StatsEnum stat) => (_progression.GetStat(_charClass, stat, _curLevel.Value) + GetAddtiveModifier(stat)) * GetPercentModifier(stat);
+    public float GetStat(StatsEnum stat) => (_progression.GetStat(_charClass, stat, _curLevel.Value) + GetAddtiveModifier(stat)) * GetPercentModifier(stat);
 
     float GetPercentModifier(StatsEnum stat)
     {

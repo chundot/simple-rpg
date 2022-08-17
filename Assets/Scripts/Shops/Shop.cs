@@ -4,6 +4,7 @@ using System.Linq;
 using RPG.Control;
 using RPG.Inventories;
 using RPG.Manager;
+using RPG.Stats;
 using UnityEngine;
 
 namespace RPG.Shops
@@ -12,7 +13,7 @@ namespace RPG.Shops
   {
     [SerializeField] string _shopName;
     [SerializeField] StockItemConfig[] _stockConfig;
-    [Range(0, 100)][SerializeField] float _sellingDiscountPercentage = 75;
+    [Range(0, 100)][SerializeField] float _sellingDiscountPercentage = 75, _minCharmDiscount = 20;
     Inventory _shopperInventory;
     readonly Dictionary<InventoryItem, int> _transaction = new(), _stock = new();
     Shopper _shopper;
@@ -85,6 +86,7 @@ namespace RPG.Shops
         return !_shopperInventory.HasSpaceFor(flatList);
       }
     }
+    public float Discount => 1 - Mathf.Min(_minCharmDiscount, _shopper.GetComponent<BaseStats>().GetStat(StatsEnum.DiscountPercentage)) / 100;
 
     void Awake()
     {
@@ -110,8 +112,8 @@ namespace RPG.Shops
     float GetPrice(StockItemConfig cfg)
     {
       if (IsBuying)
-        return cfg.Item.Price * (100f - cfg.BuyingDiscountPercentage) / 100f;
-      return cfg.Item.Price * _sellingDiscountPercentage / 100f;
+        return cfg.Item.Price * (100f - cfg.BuyingDiscountPercentage) / 100f * Discount;
+      return cfg.Item.Price * _sellingDiscountPercentage / 100f / Discount;
     }
 
     public void SelectMode(bool isBuying)

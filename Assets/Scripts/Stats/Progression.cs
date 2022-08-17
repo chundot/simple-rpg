@@ -22,9 +22,11 @@ namespace RPG.Stats
     public float GetStat(CharClass charClass, StatsEnum stat, int level)
     {
       BuildLookup();
+      if (!_lookup[charClass].ContainsKey(stat))
+        return 0;
       var levels = _lookup[charClass][stat];
       if (levels.Length == 0)
-        return 10;
+        return 0;
       return levels[Mathf.Min(level, levels.Length) - 1];
     }
 

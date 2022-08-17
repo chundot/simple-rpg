@@ -7,6 +7,8 @@ namespace RPG.Stats
     XPToLevelUp,
     Damage,
     MaxMana,
-    ManaRegen
+    ManaRegen,
+    TotalTraitPoints,
+    DiscountPercentage,
   }
 }

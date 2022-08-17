@@ -7,12 +7,12 @@ namespace RPG.Attributes
 {
   public class Mana : MonoBehaviour, ISaveable
   {
-    [SerializeField] float _maxMana = 200, _regenRate = 2;
+    [SerializeField] float _maxMana = 200;
     LazyValue<float> _curMana;
     BaseStats _stats;
     public float CurMana { get => _curMana.Value; set => _curMana.Value = value; }
-    public float MaxMana => _stats.MaxMana;
-
+    public float MaxMana => _stats.GetStat(StatsEnum.MaxMana);
+    public float ManaRegen => _stats.GetStat(StatsEnum.ManaRegen);
     public float Percentage => CurMana / MaxMana * 100;
 
     void Awake()
@@ -23,7 +23,7 @@ namespace RPG.Attributes
     void Update()
     {
       if (CurMana < _maxMana)
-        CurMana = Mathf.Min(MaxMana, CurMana + _regenRate * Time.deltaTime);
+        CurMana = Mathf.Min(MaxMana, CurMana + ManaRegen * Time.deltaTime);
     }
     public bool UserMana(float mana)
     {

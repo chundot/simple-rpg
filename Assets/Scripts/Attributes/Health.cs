@@ -17,20 +17,21 @@ namespace RPG.Attributes
     LazyValue<float> _curHealth;
     float CurHealth { get => _curHealth.Value; set => _curHealth.Value = value; }
     bool _isDeadLastFrame;
+    public float MaxHealth => _stats.GetStat(StatsEnum.Health);
     public float Percentage { get => Fraction * 100; }
-    public float Fraction { get => CurHealth / _stats.MaxHealth; }
+    public float Fraction { get => CurHealth / MaxHealth; }
     public bool IsDead { get => CurHealth == 0; }
     void Awake()
     {
       _animator = GetComponent<Animator>();
       _stats = GetComponent<BaseStats>();
-      _curHealth = new(() => _stats.MaxHealth);
+      _curHealth = new(() => MaxHealth);
     }
-    public void HealByPercentage(float percentage) => Heal(percentage / 100 * _stats.MaxHealth);
+    public void HealByPercentage(float percentage) => Heal(percentage / 100 * MaxHealth);
 
     public void Heal(float healthRegen)
     {
-      CurHealth = Mathf.Min(_stats.MaxHealth, CurHealth + healthRegen);
+      CurHealth = Mathf.Min(MaxHealth, CurHealth + healthRegen);
       _onHealthPercentageChanged.Invoke(Percentage);
       UpdateState();
     }
@@ -43,7 +44,7 @@ namespace RPG.Attributes
     {
       _stats.OnLevelUp -= HealthRegenOnLevelUp;
     }
-    void HealthRegenOnLevelUp() => CurHealth = Mathf.Min(_stats.MaxHealth, (_stats.MaxHealth - CurHealth) * .3f + CurHealth);
+    void HealthRegenOnLevelUp() => CurHealth = Mathf.Min(MaxHealth, (MaxHealth - CurHealth) * .3f + CurHealth);
     public void TakeDamage(GameObject from, float dmg)
     {
       if (IsDead)
@@ -64,13 +65,13 @@ namespace RPG.Attributes
     }
     public void TakeDmgByPercentage(GameObject from, float percentage)
     {
-      TakeDamage(from, percentage / 100 * _stats.MaxHealth);
+      TakeDamage(from, percentage / 100 * MaxHealth);
     }
 
     void AwardXP(GameObject from)
     {
       if (!from.TryGetComponent<Experience>(out var xp)) return;
-      xp.GainXP(_stats.XPReward);
+      xp.GainXP(_stats.GetStat(StatsEnum.XPReward));
     }
 
     void UpdateState()

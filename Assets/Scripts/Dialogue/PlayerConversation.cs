@@ -81,6 +81,7 @@ namespace RPG.Dialogue
       _curDialogue = null;
       CurNode = null;
       _curConversation = null;
+      IsChoosing = false;
     }
 
     IEnumerable<DialogueNode> FilteredNodes(IEnumerable<DialogueNode> nodes)

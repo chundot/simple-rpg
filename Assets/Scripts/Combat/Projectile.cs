@@ -51,7 +51,7 @@ namespace RPG.Combat
     {
       if (other.gameObject == _from) return;
       if (!other.TryGetComponent(out Health health)) return;
-      if (_target && health != _target || health.IsDead) return;
+      if (_target && health != _target || health.IsDead || !health.enabled) return;
       _onHit.Invoke();
       _spd = 0;
       health.TakeDamage(_from, _dmg);

@@ -66,7 +66,7 @@ Material:
     - _HorizonStep: 500
     - _HorizonThickness: 1
     - _MoonGlow: 0
-    - _MoonLightIntensity: 0.14464293
+    - _MoonLightIntensity: 0
     - _MoonSize: 0
     - _MoonSoftEdge: 0
     - _OverheadCloudAltitude: 1000
@@ -80,7 +80,7 @@ Material:
     - _StarsDensity0: 0
     - _StarsDensity1: 0
     - _StarsDensity2: 0
-    - _StarsEndPosition: 0.02616842
+    - _StarsEndPosition: 0
     - _StarsGlow0: 0.01
     - _StarsGlow1: 0.01
     - _StarsGlow2: 0.01
@@ -88,8 +88,8 @@ Material:
     - _StarsSize0: 0.01
     - _StarsSize1: 0.01
     - _StarsSize2: 0.01
-    - _StarsStartPosition: 0
-    - _StarsTwinkle0: 5
+    - _StarsStartPosition: -0.01
+    - _StarsTwinkle0: 0
     - _StarsTwinkle1: 0
     - _StarsTwinkle2: 0
     - _SunGlow: 0.45

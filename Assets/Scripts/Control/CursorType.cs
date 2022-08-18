@@ -9,6 +9,7 @@ namespace RPG.Control
     Loot,
     Full,
     Dialogue,
-    Shop
+    Shop,
+    Exit,
   }
 }

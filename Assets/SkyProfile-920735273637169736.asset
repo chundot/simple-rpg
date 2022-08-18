@@ -98,11 +98,11 @@ Material:
     m_Colors:
     - _DetailOverlayTintColor: {r: 0, g: 0, b: 0, a: 0}
     - _FogColor: {r: 0, g: 0, b: 0, a: 0}
-    - _GroundColor: {r: 0.4339623, g: 0.4339623, b: 0.4339623, a: 1}
+    - _GroundColor: {r: 0.2842314, g: 0.23518157, b: 0.3301887, a: 1}
     - _HorizonCloudColor: {r: 1, g: 1, b: 1, a: 1}
-    - _HorizonColor: {r: 1, g: 0.94944346, b: 0.839, a: 1}
+    - _HorizonColor: {r: 0.4159287, g: 0.36391956, b: 0.5471698, a: 1}
     - _MoonColor: {r: 0, g: 0, b: 0, a: 0}
-    - _MoonDirection: {r: 1, g: 1, b: 1, a: 0}
+    - _MoonDirection: {r: 0, g: 0, b: 1, a: 0}
     - _MoonLightColor: {r: 0, g: 0, b: 0, a: 0}
     - _OverheadCloudColor: {r: 1, g: 1, b: 1, a: 0.5647059}
     - _SkyColor: {r: 0.08056989, g: 0.03172837, b: 0.21698111, a: 1}

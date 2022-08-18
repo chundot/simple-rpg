@@ -9,11 +9,13 @@ using UnityEngine.SceneManagement;
 
 namespace RPG.Scene
 {
-  public class Portal : MonoBehaviour
+  public class Portal : MonoBehaviour, IRaycastable
   {
     public int SceneToLoad = 0, Dest = 0;
     public Transform SpawnPoint;
     bool _triggered = false;
+    public CursorType CursorType => CursorType.Exit;
+
     void OnTriggerEnter(Collider other)
     {
       if (_triggered) return;
@@ -59,6 +61,11 @@ namespace RPG.Scene
         return portal;
       }
       return null;
+    }
+
+    public bool HandleRaycast(PlayerController playerCtrl)
+    {
+      return true;
     }
   }
 

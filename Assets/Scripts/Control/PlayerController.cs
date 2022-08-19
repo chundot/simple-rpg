@@ -5,6 +5,7 @@ using RPG.Combat;
 using RPG.Inventories;
 using RPG.Manager;
 using RPG.Movement;
+using RPG.Scene;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.EventSystems;
@@ -14,7 +15,7 @@ namespace RPG.Control
   public class PlayerController : MonoBehaviour
   {
     [SerializeField] CursorMapping[] _mappings;
-    [SerializeField] float _maxNavProjectionDistance = 1, _raycastRadius = 1;
+    [SerializeField] float _maxNavProjectionDistance = 1, _raycastRadius = .4f;
     Mover _mover;
     Fighter _fighter;
     Health _health;

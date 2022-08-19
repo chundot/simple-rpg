@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEditor;
 using UnityEngine;
 
@@ -34,9 +35,9 @@ namespace RPG.Dialogue
     }
     public IEnumerable<DialogueNode> GetAllChildren(DialogueNode parent)
     {
-      foreach (var childID in parent.Children)
-        if (_nodeDic.TryGetValue(childID, out var val))
-          yield return val;
+      foreach (var childID in parent.Children.OrderBy(id => _nodeDic[id].Order))
+        if (_nodeDic.ContainsKey(childID))
+          yield return _nodeDic[childID];
     }
     public DialogueNode RootNode => _nodes[0];
 #if UNITY_EDITOR

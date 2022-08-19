@@ -10,5 +10,8 @@ EditorBuildSettings:
     guid: f228cef6d0f82db40b1d455c148ccda3
   - enabled: 1
     path: Assets/Scenes/ForestOut01.unity
+    guid: 489463e66a85c7649a55ebdd7d892e98
+  - enabled: 1
+    path: Assets/Scenes/ForestOut02.unity
     guid: ca017e2bc81030e46b307fc3ca89cb41
   m_configObjects: {}

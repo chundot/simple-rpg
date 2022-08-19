@@ -39,3 +39,4 @@ MonoBehaviour:
   _onExitAction: Attack
   _condition:
     _and: []
+  _order: 0

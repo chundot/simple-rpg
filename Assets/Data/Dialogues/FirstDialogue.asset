@@ -30,6 +30,7 @@ MonoBehaviour:
         _parameters:
         - "\u5DE5\u5320\u9524\u5B50"
         _negate: 0
+  _order: 0
 --- !u!114 &-6428848948966083412
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -55,6 +56,7 @@ MonoBehaviour:
   _onExitAction: 
   _condition:
     _and: []
+  _order: 0
 --- !u!114 &-3360096506640570922
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -72,14 +74,15 @@ MonoBehaviour:
   _children: []
   _rect:
     serializedVersion: 2
-    x: 795
-    y: 402
+    x: 883
+    y: 348
     width: 200
     height: 100
   _onEnterAction: 
   _onExitAction: 
   _condition:
     _and: []
+  _order: 0
 --- !u!114 &-2031525783650130314
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -106,6 +109,7 @@ MonoBehaviour:
   _onExitAction: 
   _condition:
     _and: []
+  _order: 0
 --- !u!114 &-1852372788768939139
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -134,6 +138,7 @@ MonoBehaviour:
   _onExitAction: 
   _condition:
     _and: []
+  _order: 0
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -174,10 +179,10 @@ MonoBehaviour:
   _rect:
     serializedVersion: 2
     x: 347
-    y: 177
+    y: 176
     width: 200
     height: 100
-  _onEnterAction: 
+  _onEnterAction: CompleteQuest
   _onExitAction: 
   _condition:
     _and:
@@ -186,6 +191,10 @@ MonoBehaviour:
         _parameters:
         - "\u8DEF\u51B5\u4E0D\u4F73"
         _negate: 0
+      - _predicate: HasEnemy
+        _parameters: []
+        _negate: 1
+  _order: 0
 --- !u!114 &1284153099459324914
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -212,6 +221,7 @@ MonoBehaviour:
   _onExitAction: GiveQuest
   _condition:
     _and: []
+  _order: 0
 --- !u!114 &5407049752912109264
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -244,6 +254,7 @@ MonoBehaviour:
         _parameters:
         - "\u8DEF\u51B5\u4E0D\u4F73"
         _negate: 1
+  _order: 2
 --- !u!114 &8809254259932661006
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -280,3 +291,4 @@ MonoBehaviour:
         _parameters:
         - "\u8DEF\u51B5\u4E0D\u4F73"
         _negate: 1
+  _order: 1

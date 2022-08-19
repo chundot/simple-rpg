@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using RPG.Core;
 using RPG.Inventories;
+using RPG.Manager;
 using RPG.Saving;
 using UnityEngine;
 
@@ -60,14 +61,20 @@ namespace RPG.Quests
 
     public bool? Evaluate(string predicate, string[] parameters)
     {
-      if (predicate == "HasQuest")
+      if (predicate == "HasEnemy")
+        return SceneMgr.Self.HasEnemy;
+      else if (predicate == "HasQuest")
       {
-        if (GetQuestStatus(parameters[0]) is QuestStatus qs)
+        if (GetQuestStatus(parameters[0]) is not null)
           return true;
+        else return false;
       }
       else if (predicate == "HasCompletedQuest")
+      {
         if (GetQuestStatus(parameters[0]) is QuestStatus status)
           return status.IsCompleted;
+        else return false;
+      }
       return null;
     }
   }

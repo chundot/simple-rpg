@@ -1,4 +1,4 @@
-using System;
+using RPG.Attributes;
 using UnityEngine;
 
 namespace RPG.Combat
@@ -16,15 +16,12 @@ namespace RPG.Combat
     {
       foreach (var fighter in _fighters)
       {
-        if (fighter.TryGetComponent<CombatTarget>(out var target))
+        if (fighter.TryGetComponent(out CombatTarget target))
           target.enabled = active;
+        if (fighter.TryGetComponent(out Health health))
+          health.enabled = active;
         fighter.enabled = active;
       }
-    }
-
-    void Update()
-    {
-
     }
   }
 

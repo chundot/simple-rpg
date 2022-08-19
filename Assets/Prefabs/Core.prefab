@@ -150,7 +150,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7785715, y: 1}
+    m_SensorSize: {x: 2.1461987, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -894,7 +894,7 @@ PrefabInstance:
     - target: {fileID: 224338124537362198, guid: 07dc30b6f1bbb4147acd5fd5555a18f5,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -569.90424
+      value: -570.74963
       objectReference: {fileID: 0}
     - target: {fileID: 224928911778522548, guid: 07dc30b6f1bbb4147acd5fd5555a18f5,
         type: 3}
@@ -1464,12 +1464,12 @@ PrefabInstance:
     - target: {fileID: 1693024143934773398, guid: 07dc30b6f1bbb4147acd5fd5555a18f5,
         type: 3}
       propertyPath: m_Size
-      value: 0.5000001
+      value: 0.94257724
       objectReference: {fileID: 0}
     - target: {fileID: 1693024143934773398, guid: 07dc30b6f1bbb4147acd5fd5555a18f5,
         type: 3}
       propertyPath: m_Value
-      value: -0.0114240125
+      value: -0.0000049454516
       objectReference: {fileID: 0}
     - target: {fileID: 1702661474151556356, guid: 07dc30b6f1bbb4147acd5fd5555a18f5,
         type: 3}
@@ -2879,12 +2879,12 @@ PrefabInstance:
     - target: {fileID: 5081310173834604459, guid: 07dc30b6f1bbb4147acd5fd5555a18f5,
         type: 3}
       propertyPath: m_Size
-      value: 0.6686992
+      value: 0.66869915
       objectReference: {fileID: 0}
     - target: {fileID: 5081310173834604459, guid: 07dc30b6f1bbb4147acd5fd5555a18f5,
         type: 3}
       propertyPath: m_Value
-      value: 0.99999976
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5116540524370413313, guid: 07dc30b6f1bbb4147acd5fd5555a18f5,
         type: 3}
@@ -4770,6 +4770,11 @@ PrefabInstance:
         type: 3}
       propertyPath: _onFractionChange.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 3925601984667128333, guid: 67bc241b49060814d9467b696212befc,
+        type: 3}
+      propertyPath: _raycastRadius
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 5856359141737080417, guid: 67bc241b49060814d9467b696212befc,
         type: 3}

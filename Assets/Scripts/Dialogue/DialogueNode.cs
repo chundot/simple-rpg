@@ -13,12 +13,14 @@ namespace RPG.Dialogue
     [SerializeField] Rect _rect = new(0, 0, 200, 100);
     [SerializeField] string _onEnterAction, _onExitAction;
     [SerializeField] Condition _condition;
+    [SerializeField] int _order = 0;
     public string OnEnterAction { get => _onEnterAction; }
     public string OnExitAction { get => _onExitAction; }
     public string Text { get => _text; }
     public Rect Rect { get => _rect; }
     public bool IsPlayerSpeaking { get => _isPlayerSpeaking; }
     public List<string> Children { get => _children; }
+    public int Order => _order;
     public bool CheckCondition(IEnumerable<IPredicateEvaluator> evaluators)
     {
       return _condition.Check(evaluators);

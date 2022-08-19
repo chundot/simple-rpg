@@ -20,6 +20,7 @@ namespace RPG.Manager
           _player = value;
       }
     }
+    public bool HasEnemy => GameObject.FindGameObjectsWithTag("Enemy").Length > 0;
   }
 
 }

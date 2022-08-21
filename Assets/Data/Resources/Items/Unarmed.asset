@@ -24,7 +24,7 @@ MonoBehaviour:
   _weaponAnimator: {fileID: 0}
   _weaponPrefab: {fileID: 0}
   _range: 2.5
-  _dmg: 5
+  _dmg: 0
   _cd: 2.5
   _extraPercent: 0
   _isRightHanded: 1

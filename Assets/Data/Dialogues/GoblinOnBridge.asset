@@ -1,0 +1,154 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-6906275371382960376
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef41b43ae994d444f9f1dc7237cf2c15, type: 3}
+  m_Name: 5e692a76-8b7b-457b-8d9b-812b715eda82
+  m_EditorClassIdentifier: 
+  _isPlayerSpeaking: 1
+  _text: "\u897F\u5185\uFF01"
+  _children:
+  - 8384a73a-6538-4d62-8418-545955073fcb
+  _rect:
+    serializedVersion: 2
+    x: 361
+    y: 222
+    width: 200
+    height: 100
+  _onEnterAction: 
+  _onExitAction: 
+  _condition:
+    _and: []
+  _order: 0
+--- !u!114 &-6004633982202930286
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef41b43ae994d444f9f1dc7237cf2c15, type: 3}
+  m_Name: 8384a73a-6538-4d62-8418-545955073fcb
+  m_EditorClassIdentifier: 
+  _isPlayerSpeaking: 0
+  _text: "\u6765\u554A\uFF01"
+  _children: []
+  _rect:
+    serializedVersion: 2
+    x: 651
+    y: 238
+    width: 200
+    height: 100
+  _onEnterAction: 
+  _onExitAction: Attack
+  _condition:
+    _and: []
+  _order: 0
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 800bc5a9b34cf1347952ac6e23f0c2d6, type: 3}
+  m_Name: GoblinOnBridge
+  m_EditorClassIdentifier: 
+  _nodes:
+  - {fileID: 2339400042039495134}
+  - {fileID: 829139749989478623}
+  - {fileID: -6906275371382960376}
+  - {fileID: 1792173176614057617}
+  - {fileID: -6004633982202930286}
+--- !u!114 &829139749989478623
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef41b43ae994d444f9f1dc7237cf2c15, type: 3}
+  m_Name: 0a56a7cb-dc7b-41a0-82ef-fa0ea7002915
+  m_EditorClassIdentifier: 
+  _isPlayerSpeaking: 1
+  _text: "\u6211\u53EA\u662F\u8DEF\u8FC7\u2026\u2026"
+  _children:
+  - c2434b31-1599-49d3-b877-1fea8d5c9e80
+  _rect:
+    serializedVersion: 2
+    x: 350
+    y: 118
+    width: 200
+    height: 100
+  _onEnterAction: 
+  _onExitAction: 
+  _condition:
+    _and: []
+  _order: 0
+--- !u!114 &1792173176614057617
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef41b43ae994d444f9f1dc7237cf2c15, type: 3}
+  m_Name: c2434b31-1599-49d3-b877-1fea8d5c9e80
+  m_EditorClassIdentifier: 
+  _isPlayerSpeaking: 0
+  _text: "\u54FC\uFF01"
+  _children: []
+  _rect:
+    serializedVersion: 2
+    x: 600
+    y: 129
+    width: 200
+    height: 100
+  _onEnterAction: 
+  _onExitAction: 
+  _condition:
+    _and: []
+  _order: 0
+--- !u!114 &2339400042039495134
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef41b43ae994d444f9f1dc7237cf2c15, type: 3}
+  m_Name: 011da1c2-0780-40f6-918d-9dfd69c52a50
+  m_EditorClassIdentifier: 
+  _isPlayerSpeaking: 0
+  _text: "\u5E72\u561B\uFF1F"
+  _children:
+  - 0a56a7cb-dc7b-41a0-82ef-fa0ea7002915
+  - 5e692a76-8b7b-457b-8d9b-812b715eda82
+  _rect:
+    serializedVersion: 2
+    x: 108
+    y: 164
+    width: 200
+    height: 100
+  _onEnterAction: 
+  _onExitAction: 
+  _condition:
+    _and: []
+  _order: 0

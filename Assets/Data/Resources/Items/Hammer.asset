@@ -25,8 +25,8 @@ MonoBehaviour:
   _weaponPrefab: {fileID: 3570064701694741737, guid: d5d3583f5e3e64f4cb17d145c92ff321,
     type: 3}
   _range: 3.5
-  _dmg: 10
-  _cd: 3
+  _dmg: 5
+  _cd: 3.2
   _extraPercent: 0
   _isRightHanded: 1
   _projectile: {fileID: 0}

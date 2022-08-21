@@ -14,6 +14,7 @@ namespace RPG.Shops
     [SerializeField] string _shopName;
     [SerializeField] StockItemConfig[] _stockConfig;
     [Range(0, 100)][SerializeField] float _sellingDiscountPercentage = 75, _minCharmDiscount = 20;
+    [SerializeField] bool _raycastable;
     Inventory _shopperInventory;
     readonly Dictionary<InventoryItem, int> _transaction = new(), _stock = new();
     Shopper _shopper;
@@ -62,7 +63,6 @@ namespace RPG.Shops
     public event Action OnChange;
     public string Name => _shopName;
     public CursorType CursorType => CursorType.Shop;
-
     public bool IsEmpty => _transaction.Count == 0;
     public bool NotEnoughMoney
     {
@@ -170,10 +170,17 @@ namespace RPG.Shops
 
     public bool HandleRaycast(PlayerController playerCtrl)
     {
+      if (!_raycastable) return false;
       if (Input.GetMouseButtonDown(0))
-        playerCtrl.GetComponent<Shopper>().ActiveShop = this;
+        ActivateShop(playerCtrl);
       return true;
     }
+
+    public void ActivateShop(PlayerController playerCtrl)
+    {
+      playerCtrl.GetComponent<Shopper>().ActiveShop = this;
+    }
+
     [Serializable]
     class StockItemConfig
     {

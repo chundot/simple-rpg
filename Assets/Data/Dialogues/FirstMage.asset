@@ -1,0 +1,70 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-850415557405005926
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef41b43ae994d444f9f1dc7237cf2c15, type: 3}
+  m_Name: c6a323e4-36fe-4715-8707-371cd0091665
+  m_EditorClassIdentifier: 
+  _isPlayerSpeaking: 0
+  _text: "\u4E00\u4E2A\u4EBA\u53BB\u5F88\u5371\u9669\u2026\u2026\u4ECE\u6211\u8FD9\u4E70\u70B9\u6CD5\u672F\u5427\uFF01"
+  _children:
+  - 57e3a8f8-11dd-4bad-adad-4063206bfc39
+  _rect:
+    serializedVersion: 2
+    x: 176
+    y: 148
+    width: 200
+    height: 100
+  _onEnterAction: 
+  _onExitAction: 
+  _condition:
+    _and: []
+  _order: 0
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 800bc5a9b34cf1347952ac6e23f0c2d6, type: 3}
+  m_Name: FirstMage
+  m_EditorClassIdentifier: 
+  _nodes:
+  - {fileID: -850415557405005926}
+  - {fileID: 1204140620218511076}
+--- !u!114 &1204140620218511076
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef41b43ae994d444f9f1dc7237cf2c15, type: 3}
+  m_Name: 57e3a8f8-11dd-4bad-adad-4063206bfc39
+  m_EditorClassIdentifier: 
+  _isPlayerSpeaking: 0
+  _text: "\u5F31\u667A\u4E5F\u80FD\u7528\uFF01"
+  _children: []
+  _rect:
+    serializedVersion: 2
+    x: 454
+    y: 150
+    width: 200
+    height: 100
+  _onEnterAction: 
+  _onExitAction: OpenShop
+  _condition:
+    _and: []
+  _order: 0
